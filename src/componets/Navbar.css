@@ -1,0 +1,123 @@
+.nav
+{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    position: relative;
+    border-bottom: solid 2px;
+}
+.logo
+{
+    margin-left: 10px;
+}
+.navigations-links 
+{
+    list-style-type: none;
+    margin-right: 10px;
+    margin-left: auto;
+    padding: 0;
+    display: flex;
+    gap: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.navigations-links li:hover
+{
+    color: white;
+    background-color: rgba(1,1,1,0.7);
+}
+.navigations-links li
+{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.menuIcon
+{
+    display: none;
+}
+/*Navigation Bar of Mobile Phones*/
+@media only screen and (max-width: 600px)
+{
+    .nav
+    {
+        position: absolute;
+        flex-direction: column;
+        width: 100%;
+        border-bottom: none;
+    }
+    .navigations-links
+    {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        z-index: 1;
+        gap: 10px;
+        margin: 0px;
+    }
+    .navigations-links li
+    {
+        height: 20px;
+        width: 100%;
+        text-align: center;
+    }
+    .hide
+    {
+        display: none;
+    }
+    .logo
+    {
+        display: flex;
+        flex-direction: row;
+        margin: 10px;
+    }
+    .menu
+    {
+        display: block !important;
+    }
+    
+}
+
+/* CSS Copied For Navbar Toggle Button*/
+.menu {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+    padding: 0;
+    margin-left: auto;
+  }
+  .line {
+    fill: none;
+    stroke: black;
+    stroke-width: 6;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .line1 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+  }
+  .line2 {
+    stroke-dasharray: 60 60;
+    stroke-width: 6;
+  }
+  .line3 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+  }
+  .opened .line1 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+  }
+  .opened .line2 {
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
+  }
+  .opened .line3 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+  }
+  
