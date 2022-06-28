@@ -35,12 +35,32 @@
 {
     display: none;
 }
+.form
+{
+  width: 300px;
+  height: 200px;
+  margin: 10px auto;
+  padding: 30px;
+  background-color: white;
+  box-shadow: 5px 10px 18px black;
+  z-index: 2;
+}
+.form *
+{
+  width: 250px;
+}
+.effect-1
+{
+  border: 0; padding: 0;
+}
+input.effect-1{font: 15px "Lato", Arial, sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px; border-bottom: 0.1px groove #f7f5f5}
+.focus-border{left: 0; width: 0; height: 2px; background-color: #4caf50; transition: 0.4s;margin-bottom: 15px;}
+.effect-1:focus + .focus-border{width: 100%; transition: 0.4s;}
 /*Navigation Bar of Mobile Phones*/
 @media only screen and (max-width: 600px)
 {
     .nav
     {
-        position: absolute;
         flex-direction: column;
         width: 100%;
         border-bottom: none;

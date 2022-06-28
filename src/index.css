@@ -8,6 +8,8 @@ body {
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
+  background-color: #659DBD;
+  color: white;
 }
 *
 {
@@ -16,6 +18,7 @@ body {
   margin-top: auto;
   margin-bottom: auto;
 }
+:focus{outline: none;}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

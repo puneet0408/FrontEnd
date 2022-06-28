@@ -1,9 +1,6 @@
+// import {useState} from 'react'
 let Home = () =>  
 {
-    return (
-        <>
-        <h1>Home Page</h1>
-        </>
-    );
+   return (<>home</>);
 };
 export default Home;
