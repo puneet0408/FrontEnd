@@ -1,0 +1,16 @@
+.listed-packages
+{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap:50px;
+    padding: 10px 0px 0px 10px;
+}
+/* Responsive package Bar */
+@media only screen and (max-width: 632px) {
+    .listed-packages
+    {
+        flex-direction: column;
+    }
+}

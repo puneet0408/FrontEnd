@@ -3,8 +3,12 @@
     display: flex;
     flex-direction: row;
     height: 50px;
-    position: relative;
+    /* width: 100%;
+    position: fixed;
+    top: 0; */
+    justify-content: space-between;
     border-bottom: solid 2px;
+    align-items: center;
 }
 .logo
 {
@@ -14,22 +18,20 @@
 {
     list-style-type: none;
     margin-right: 10px;
-    margin-left: auto;
     padding: 0;
     display: flex;
     gap: 50px;
     font-size: 1rem;
     cursor: pointer;
 }
+.mobile-nav ul li{
+  list-style: none;
+  padding-top: 25px;
+}
 .navigations-links li:hover
 {
     color: white;
     background-color: rgba(1,1,1,0.7);
-}
-.navigations-links li
-{
-    margin-top: auto;
-    margin-bottom: auto;
 }
 .menuIcon
 {
@@ -57,44 +59,43 @@ input.effect-1{font: 15px "Lato", Arial, sans-serif; color: #333; width: 100%; b
 .focus-border{left: 0; width: 0; height: 2px; background-color: #4caf50; transition: 0.4s;margin-bottom: 15px;}
 .effect-1:focus + .focus-border{width: 100%; transition: 0.4s;}
 /*Navigation Bar of Mobile Phones*/
+.mobile-nav
+{
+  background-color: rgba(0,0,0,0.5);
+  position: absolute;
+  color: white;
+  display: none;
+  width: 100%;
+  height: 100vh;
+}
+.mobile-nav ul
+{
+  text-align: center;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0px;
+}
+
+.show
+{
+  display: block;
+}
 @media only screen and (max-width: 600px)
 {
-    .nav
-    {
-        flex-direction: column;
-        width: 100%;
-        border-bottom: none;
-    }
-    .navigations-links
-    {
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        z-index: 1;
-        gap: 10px;
-        margin: 0px;
-    }
-    .navigations-links li
-    {
-        height: 20px;
-        width: 100%;
-        text-align: center;
-    }
     .hide
     {
         display: none;
-    }
-    .logo
-    {
-        display: flex;
-        flex-direction: row;
-        margin: 10px;
     }
     .menu
     {
         display: block !important;
     }
-    
+    .desktop-nav
+    {
+      display: none;
+    }
 }
 
 /* CSS Copied For Navbar Toggle Button*/

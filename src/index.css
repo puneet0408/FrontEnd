@@ -11,15 +11,33 @@ body {
   background-color: #659DBD;
   color: white;
 }
-*
-{
+
+* {
   margin: 0px;
   padding: 0px;
   margin-top: auto;
   margin-bottom: auto;
 }
-:focus{outline: none;}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+button {
+  background-color: #659DBD;
+  width: 50px;
+}
+
+:focus {
+  outline: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.hide {
+  display: none;
 }
