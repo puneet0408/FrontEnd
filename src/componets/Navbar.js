@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useState, createContext, useContext ,useEffect} from "react";
 import { Outlet, Link } from "react-router-dom";
+import { apiContext } from "../ContextApi/ContextProvider";
 import './Navbar.css'
 const Navbar = () => {
     let [hide, setHide] = useState(true);
+    let {logedin,setLogedin,cart,setCart} = useContext(apiContext);
+    useEffect(() => 
+    {
+        //Fetch Cart Element from BackendApi Latter
+        // setCart([...cart,{id:1,val:2}]);
+    },[]);
     let toggleNav = () => {
         setHide(!hide);
+    }
+    let logout = () => 
+    {
+        setLogedin(!logedin);
     }
     return (
         <>
@@ -28,7 +39,7 @@ const Navbar = () => {
                         <Link to="/about"> About Us </Link>
                     </li>
                     <li>
-                        <Link to="/singin"> Sing In </Link>
+                        <Link to="/singin" onClick={logout}>{logedin?"Logout":"Sign in"} </Link>
                     </li>
                     <li>
                         <Link to="/singup"> Sing Up </Link>

@@ -1,3 +1,4 @@
+import {useState,createContext} from 'react';
 import './App.css';
 import Navbar from './componets/Navbar'
 import Home from './componets/Home'
@@ -6,6 +7,7 @@ import Singin from './componets/Singin'
 import Singup from './componets/Singup'
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 function App() {
+  let [login,SetLogin] = useState(false);
   return (
     <BrowserRouter>
         <Routes>
