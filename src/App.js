@@ -6,6 +6,7 @@ import  About from './componets/About'
 import Singin from './componets/Singin'
 import Singup from './componets/Singup'
 import {BrowserRouter,Routes,Route} from "react-router-dom";
+import Authentication from './componets/Authentication';
 function App() {
   let [login,SetLogin] = useState(false);
   return (
@@ -14,8 +15,8 @@ function App() {
           <Route path='/' element={<Navbar/>}>
           <Route index element={<Home />} />
           <Route path='/about' element={<About />} />
-          <Route path='/singin' element={<Singin />} />
-          <Route path='/singup' element={<Singup />} />
+          <Route path='/singin' element={<Authentication/>} />
+          {/* <Route path='/singup' element={<Singup />} /> */}
           </Route>
         </Routes>
     </BrowserRouter>
