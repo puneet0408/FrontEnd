@@ -58,9 +58,9 @@ let Card = (props) => {
                     </h4>
                     <h2 className="price">{props.price} Per person </h2>
                     <div className="member-count">
-                        <button className="min" onClick={rem}>-</button>
+                        <button className="min" onClick={(e)=>{e.stopPropagation();rem()}}>-</button>
                         <p>Member: {memberCount}</p>
-                        <button className="add" onClick={add}>+</button>
+                        <button className="add" onClick={(e)=>{e.stopPropagation();add()}}>+</button>
                     </div>
                     <button className="buyButton">Buy Now</button>
                     <button className="addtoCart" onClick={cartManupulation}>{!cartadd ? "Add to Cart" : "Remove from cart"}</button>

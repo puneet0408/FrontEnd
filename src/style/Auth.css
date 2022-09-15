@@ -5,7 +5,7 @@
     padding: 10px;
 }
 .authBody{
-    background-color: #fff;
+    background-color: #fff !important;
     width: 30rem;
     padding: 20px;
     border-radius: 30px;
@@ -19,11 +19,12 @@
 .authBodySwapButton button {
     width: 25%;
     text-align: center;
-    color: #fff;
+    color: #fff ;
     background-color:#659DBD;
     border: 1px solid #659DBD;
     border-radius: 20px;
-    padding: 5px 10px;
+    padding: 10px 10px;
+    cursor: pointer;
 
 
 }
@@ -46,3 +47,95 @@
     justify-content: center !important;
    
 }
+.box{
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    z-index: 5;
+  }
+  .box::before{
+    width: 80rem;
+    height:80rem;
+    left: -20rem;
+    background-color: #f0f5fa;
+    content: '';
+    /* opacity: .8 ; */
+    top: 12rem;
+    z-index: -1;
+    position: absolute;
+    animation: rotate 11s  linear infinite;
+    border-radius: 45%;
+  
+  }
+  .box::after{
+    left: 0;
+    width: 80rem;
+    height:80rem;
+    border-radius: 47%;
+    background-color: #74CCF4;
+    content: '';
+    z-index: -1;
+    left: -20rem;
+    opacity: .3;
+    top: 13rem;
+    position: absolute;
+    animation: rotate 10s  linear infinite;
+  
+  }
+  @keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+  }
+  .signup input{
+    height: 30px;
+    border-radius: 10px;
+    width: 100%;
+    padding-left: 10px;
+    outline: none;
+    border-radius: 20px;
+
+
+  }
+  .signin input{
+    height: 30px;
+    border-radius: 10px;
+    width: 100%;
+    padding-left: 10px;
+    outline: none;
+    border-radius: 20px;
+
+
+  }
+  .signup button, .signin button{
+    padding: 10px 5px ;
+    height: 35px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    margin-top: 10px;
+    width: 100%;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 5px;
+    color:#fff;
+  }
+  .check{
+    display: flex;
+
+  }
+  .check span{
+    color: #000;
+    margin-left: 5px;
+  }
+  .check input{
+    margin-top: 10px;
+    width: 20px;
+    height: 20px;
+    outline: none !important;
+    cursor: pointer;
+  }
