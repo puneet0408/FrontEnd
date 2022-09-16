@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Singin from "./Singin"
-import Singup from "./Singup"
+import Singup  from './Singup'
 import "../style/Auth.css"
-// import { ChevronDownIcon } from '@chakra-ui/icons'
 import axios from 'axios'
 function Authentication() {
   const [show, shetShow] = useState(true)

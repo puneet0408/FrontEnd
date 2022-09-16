@@ -42,7 +42,7 @@ const Navbar = () => {
                         <Link to="/singin" onClick={logout}>{logedin?"Logout":"Sign in"} </Link>
                     </li>
                     <li>
-                        <Link to="/singup"> Sing Up </Link>
+                        <Link to="/contact"> Contact Us </Link>
                     </li>
                 </ul>
             </div>
