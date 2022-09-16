@@ -1,48 +1,49 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { apiContext } from "../../ContextApi/ContextProvider";
 import "./Card.css"
 let Card = (props) => {
+    const navigate = useNavigate();
     let [cartadd, setCartadd] = useState(false);
-    let [memberCount,setMemberCount] = useState(1);
-    let {cart,setCart} = useContext(apiContext);
+    let [memberCount, setMemberCount] = useState(1);
+    let { cart, setCart } = useContext(apiContext);
     //Function to increase and decrese member count
-    const add =(event) => 
-    {
-        setMemberCount(memberCount+1);
+    const add = (event) => {
+        setMemberCount(memberCount + 1);
     }
-    const rem = (event) => 
-    {
-        if(memberCount!=1)
-        {
-            setMemberCount(memberCount-1);
+    const rem = (event) => {
+        if (memberCount != 1) {
+            setMemberCount(memberCount - 1);
         }
     }
     //Add and remove from Cart
-    const cartManupulation = (event) => 
-    {
+    const cartManupulation = (event) => {
         // console.log(cartadd);
-        if(!cartadd)
-        {
-            
-            setCart([...cart,{id:props.id,count:memberCount}]);
+        if (!cartadd) {
+
+            setCart([...cart, { id: props.id, count: memberCount }]);
             setCartadd(!cartadd);
         }
-        else
-        {
-            let newcart=cart.filter(ele => {return ele.id!=props.id});
+        else {
+            let newcart = cart.filter(ele => { return ele.id != props.id });
             setCart(newcart);
             setCartadd(!cartadd);
         }
-        
-        
+
+
     }
     console.log(cart);
+    const handlePage = () => {
+      
+        navigate('/cardetails', { state: {props } });
+
+    }
     return (
         <div >
-            <div className="card">
+            <div className="card" onClick={handlePage}>
                 <div className="xx">
-                <img className="image" src={props.link} />
-                <div className="description">{props.description}</div>
+                    <img className="image" src={props.link} />
+                    <div className="description">{props.description}</div>
                 </div>
                 <div className="card__text">
                     <h2 className="name">{props.packageName}</h2>
@@ -57,12 +58,12 @@ let Card = (props) => {
                     </h4>
                     <h2 className="price">{props.price} Per person </h2>
                     <div className="member-count">
-                        <button className="min" onClick={rem}>-</button>
+                        <button className="min" onClick={(e)=>{e.stopPropagation();rem()}}>-</button>
                         <p>Member: {memberCount}</p>
-                        <button className="add" onClick={add}>+</button>
+                        <button className="add" onClick={(e)=>{e.stopPropagation();add()}}>+</button>
                     </div>
                     <button className="buyButton">Buy Now</button>
-                    <button className="addtoCart" onClick={cartManupulation}>{!cartadd?"Add to Cart":"Remove from cart"}</button>
+                    <button className="addtoCart" onClick={cartManupulation}>{!cartadd ? "Add to Cart" : "Remove from cart"}</button>
                 </div>
             </div>
         </div>);

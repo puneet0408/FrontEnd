@@ -7,6 +7,7 @@ import Singin from './componets/Singin'
 import Singup from './componets/Singup'
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Authentication from './componets/Authentication';
+import CarDetails from './componets/small_components/CarDetails';
 function App() {
   let [login,SetLogin] = useState(false);
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/singin' element={<Authentication/>} />
+          <Route path='/cardetails' element={<CarDetails/>} />
           {/* <Route path='/singup' element={<Singup />} /> */}
           </Route>
         </Routes>
