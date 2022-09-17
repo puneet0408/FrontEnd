@@ -84,11 +84,12 @@
     width: 90%;
    }
 .Form_button{
-   padding: .5rem;
-   background: greenyellow;
-   color: rgb(223, 20, 20);
-   font-size: .8rem;
-   cursor: pointer;
-   width: 5rem;
-   border-radius: .2rem;
+  width: 30%;
+  text-align: center;
+  color: #fff ;
+  background-color:#659DBD;
+  border: 1px solid #659DBD;
+  border-radius: 20px;
+  padding: 10px 10px;
+  cursor: pointer;
  }

@@ -38,13 +38,19 @@
     flex-direction: column !important;
     justify-content: center !important;
     /* align-items: center; */
-    margin-left: 2rem !important;
-    margin-right: 2rem !important;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
 }
 .signin form{
     display: flex;
     flex-direction: column !important;
     justify-content: center !important;
+}
+ .signup input{
+  width: 90% !important;
+}
+.signin input{
+  width: 90% !important;
 }
 
 .form-control{

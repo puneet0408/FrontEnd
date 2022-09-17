@@ -53,10 +53,11 @@
 .text_area h1{
     color: #fff;
     font-size:3rem;
-    font-weight: 1000;
+    font-weight: 800;
 }
 
 .text_area p {
     font-size: 1.5rem;
     font-weight: 500;
+    color: #fff;
 }

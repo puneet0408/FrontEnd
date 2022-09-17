@@ -70,14 +70,6 @@ let products = [
 function temp(product) {
   return (
     <Card {...product} />
-    // <Card
-    //   // id={product.id}
-    //   // price={product.price}
-    //   // link={product.link}
-    //   // main_destination={product.main_destination}
-    //   // packageName={product.packageName}
-    //   // description="Read more"
-    // ></Card>
   );
 }
 

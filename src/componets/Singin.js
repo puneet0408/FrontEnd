@@ -51,14 +51,7 @@ function Singin() {
               id="validationServerUsernameFeedback"
               class="invalid-feedback"
             ></div>
-                 <input
-              placeholder="Confirm-Password"
-              type="pasword"
-              class="form-control"
-              id="validationServerUsername"
-              aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
-              required
-            />
+       
           </div>
         </div>
         <div class="col-md-8 check">
