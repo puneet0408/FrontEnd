@@ -1,0 +1,31 @@
+.Query-form{
+    background-color:rgb(190, 29, 164);
+    border-radius: 10%;
+}
+
+.QuickQuery{
+    text-align: center;
+}
+.Query-form  form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.SubmitQuery{
+    background-color: rgb(213, 226, 22);
+    padding: .5rem;
+    text-align: center;
+    width: 100px;
+}
+ 
+
+
+.formInput{
+    background-color:#fff;
+    margin:.5rem;
+    padding:  1rem;
+    border-radius: 10px;
+}

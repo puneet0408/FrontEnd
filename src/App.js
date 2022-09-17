@@ -1,15 +1,15 @@
-import {useState,createContext} from 'react';
+//import {useState} from 'react';
 import './App.css';
 import Navbar from './componets/Navbar'
 import Home from './componets/Home'
 import  About from './componets/About'
-import Singin from './componets/Singin'
+//import Singin from './componets/Singin'
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Authentication from './componets/Authentication';
 import CarDetails from './componets/small_components/CarDetails';
 import Contact from './componets/Contact';
 function App() {
-  let [login,SetLogin] = useState(false);
+  //let [login,SetLogin] = useState(false);
   return (
     <BrowserRouter>
         <Routes>

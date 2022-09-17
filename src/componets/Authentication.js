@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import Singin from "./Singin"
 import Singup  from './Singup'
 import "../style/Auth.css"
-import axios from 'axios'
+// import axios from 'axios'
 function Authentication() {
   const [show, shetShow] = useState(true)
 

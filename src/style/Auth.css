@@ -45,8 +45,12 @@
     display: flex;
     flex-direction: column !important;
     justify-content: center !important;
-   
 }
+
+.form-control{
+  margin: .5rem 0;
+}
+
 .box{
     position: relative;
     overflow: hidden;
@@ -126,8 +130,8 @@
   }
   .check{
     display: flex;
-
   }
+
   .check span{
     color: #000;
     margin-left: 5px;
@@ -139,3 +143,4 @@
     outline: none !important;
     cursor: pointer;
   }
+

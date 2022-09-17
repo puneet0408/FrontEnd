@@ -1,0 +1,40 @@
+ 
+
+ .gallaryPage{
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+ }
+ .gallaryHeading{
+    padding: .5rem;
+    background-color: black;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+ }
+
+.gallaryCard{
+    object-fit: cover;
+    width: 80%;
+    height: 80%;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.gallaryImg{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    border: .5rem solid #fff;
+    border-radius: 0.5rem;
+    flex: 1 1 20rem;
+    height: 12.3rem;
+    position: relative;
+}

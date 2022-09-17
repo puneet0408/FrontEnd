@@ -1,10 +1,10 @@
-import { useState, createContext, useContext ,useEffect} from "react";
+import { useState, useContext ,useEffect} from "react";
 import { Outlet, Link } from "react-router-dom";
 import { apiContext } from "../ContextApi/ContextProvider";
 import './Navbar.css'
 const Navbar = () => {
     let [hide, setHide] = useState(true);
-    let {logedin,setLogedin,cart,setCart} = useContext(apiContext);
+    let {logedin,setLogedin} = useContext(apiContext);
     useEffect(() => 
     {
         //Fetch Cart Element from BackendApi Latter
