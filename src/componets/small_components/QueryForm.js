@@ -1,13 +1,15 @@
 import{ useState } from "react";
 import "../../style/QureyForm.css";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
+
 
 export default function QureyForm() {
   const [FormData, setFormData] = useState({
-    userName: "",
-    phoneNo: "",
-    userEmail: "",
-    PickUp:"",
-    drop:""
+    name: "",
+    number: "",
+    email: ""
   });
 
   function handleChange(event) {
@@ -22,7 +24,9 @@ export default function QureyForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    event.target.reset();
     console.log(FormData);
+    toast("Query submitted")
   }
 
   return (
@@ -33,49 +37,36 @@ export default function QureyForm() {
     <form  onSubmit={handleSubmit}>
       <input
         type="text"
-        name="userName"
+        name="name"
         className="formInput"
-        placeholder="userName"
+        placeholder="name"
         onChange={handleChange}
-        value={FormData.firstName}
+        value={FormData.name}
+        required
       />
       <input
         type="text"
-        name="phoneNo"
-        placeholder="phoneNo"
+        name="number"
+        placeholder="mobile no"
         className="formInput"
+        minlength="1" 
+              maxlength="10"
         onChange={handleChange}
-        value={FormData.phoneNo}
+        value={FormData.number}
+        required
       />
       <input
         type="email"
-        name="userEmail"
+        name="email"
         placeholder="email"
         className="formInput"
         onChange={handleChange}
-        value={FormData.userEmail}
-      />
- 
-      <input
-        type="text"
-        name="pickup"
-        placeholder="PickUp"
-        className="formInput"
-        onChange={handleChange}
-        value={FormData.PickUp}
-      />
-      <input
-        type="text"
-        name="drop"
-        placeholder="Drop"
-        className="formInput"
-        onChange={handleChange}
-        value={FormData.drop}
-      />
-      
-     
+        value={FormData.email}
+        required
+      /> 
       <button className="SubmitQuery" >submit</button>
     </form>
+    <ToastContainer/>
     </div>
   );
 }

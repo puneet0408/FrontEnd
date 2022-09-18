@@ -23,18 +23,22 @@
      z-index: 5;
  }
 
+ .input-group-text{
+  color: #000;
+ }
+
  .contactForm::before{
    width: 80rem;
    height:80rem;
    left: -20rem;
    background-color: #f0f5fa;
    content: '';
-   /* opacity: .8 ; */
    top: 12rem;
    z-index: -1;
    position: absolute;
    animation: rotate 11s  linear infinite;
    border-radius: 45%;
+   
  
  }
  .contactForm::after{
@@ -64,32 +68,45 @@
  .inTouch{
    color: black;
  }
- .Name  .Contact{
-   display:flex;
-   flex-direction: row;
- }
- .name , .cont , .address ,.Comment {
+
+ .name , .cont ,.Comment {
     text-transform: none;
  margin:.5rem;
  padding:  1rem;
  border-radius: 10px;
+ width: 80%;
  }
- .address{
-    padding: .7rem;
-    width: 90%;
-   }
+
+ 
    .Comment{
-    padding: 1rem;
     resize: none;
-    width: 90%;
    }
+
 .Form_button{
-  width: 30%;
+  width: 35%;
   text-align: center;
   color: #fff ;
   background-color:#659DBD;
   border: 1px solid #659DBD;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 10px 10px;
   cursor: pointer;
+ }
+
+ .Form_button:hover{
+  border: #74CCF4;
+  background-color: #fff;
+  color: #74CCF4;
+ }
+
+ .contactFields{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 20rem;
+ }
+
+ .contactIcon{
+color: #000;
  }

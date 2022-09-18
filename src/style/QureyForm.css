@@ -16,15 +16,21 @@
 }
 
 .SubmitQuery {
-  width: 30%;
+  width: 35%;
   text-align: center;
-  color: #fff;
-  background-color: #659dbd;
-  border: 1px solid #659dbd;
-  border-radius: 20px;
+  color: #fff ;
+  background-color:#659DBD;
+  border: 1px solid #659DBD;
+  border-radius: 10px;
   padding: 10px 10px;
   cursor: pointer;
 }
+
+.SubmitQuery:hover{
+  border: #74CCF4;
+  background-color: #fff;
+  color: #74CCF4;
+ }
 
 .formInput {
   background-color: #fff;

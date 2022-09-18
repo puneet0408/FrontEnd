@@ -25,9 +25,14 @@
     border-radius: 20px;
     padding: 10px 10px;
     cursor: pointer;
-
-
 }
+
+.authBodySwapButton button:hover {
+  color: #659DBD ;
+  border: 1px solid #659DBD;
+  background-color: #fff;
+}
+
 .activeSign{
     background-color: #fff !important;
     color: #000 !important;
@@ -133,7 +138,20 @@
     font-size: 20px;
     padding: 5px;
     color:#fff;
-  }
+    background-color: #74CCF4;
+}
+
+.signup button:hover{
+  color:#74CCF4;
+  background-color: #fff;
+  border: #74CCF4;
+}
+.signin button:hover{
+  color:#74CCF4;
+  background-color: #fff;
+  border: #74CCF4;
+}
+
   .check{
     display: flex;
   }
@@ -150,3 +168,4 @@
     cursor: pointer;
   }
 
+   

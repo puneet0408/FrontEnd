@@ -35,6 +35,10 @@ let Card = (props) => {
   const handlePage = () => {
     navigate(`/cardetails`, { state: { props } });
   };
+
+  const goToSignUpPage=()=>{
+    navigate("/singin")
+  }
   return (
     <div>
       <div className="packagecard">
@@ -65,7 +69,7 @@ let Card = (props) => {
             </button>
           </div> */}
          
-            <button className="buypackage">book Now</button>
+            <button onClick={goToSignUpPage}  className="buypackage">book Now</button>
             <button className="addtoCartpackage" onClick={cartManupulation}>
               {!cartadd ? "Add to Cart" : "Remove from cart"}
             </button>
