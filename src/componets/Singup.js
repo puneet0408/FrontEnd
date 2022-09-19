@@ -1,58 +1,212 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from "react-router-dom"
+import React from "react";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+//import { useNavigate } from "react-router-dom"
+import {
+  faSignature,faAt,faPhone,faLocationDot,faKey
+  
+   } from "@fortawesome/free-solid-svg-icons";
+   import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Singup() {
 
 
-    return (
-        <div className='signup'>
-            <form style={{ width: "100%" }}>
+  
+  const [signupForm, setForm] = React.useState({
+    name: "",
+    email: "",
+    number: "",
+    address: "",
+    password: "",
+    confirm_password:""
+  });
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setForm((prevInput) => ({
+      ...prevInput,
+      [name]: value,
+    }));
+  }
 
+   
+  function handleSubmit(event) {
+    event.preventDefault();
+    event.target.reset();
+    console.log(signupForm);
+    if (signupForm.password  !==signupForm.confirm_password) {
+      alert("Passwords don't match");
+  } else {
+      // make API call
+  }
+  toast( "signup sucessfully")
+  }
 
-                <div class="">
-                    <label for="validationServerUsername" class="form-label"></label>
-                    <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend3">@</span>
-                        <input placeholder='Username' type="text" class="form-control" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required />
-                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                            Please choose a username.
-                        </div>
-                    </div>
-                </div>
-                <div >
-                    <label for="validationServerUsername" class="form-label"></label>
-                    <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend3">@</span>
-                        <input placeholder='Password' type="pasword" class="form-control" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required />
-                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                           
-                        </div>
-                    </div>
-                </div>
-                <div >
-                    <label for="validationServerUsername" class="form-label"></label>
-                    <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend3">@</span>
-                        <input placeholder='Confirm Password' type="pasword" class="form-control" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required />
-                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                           
-                           </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    {/* <div class="form-check d-flex">
+  return (
+    <div className="signup">
+      <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+        <div>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend3">
+            <FontAwesomeIcon
+          icon={faSignature}
+        ></FontAwesomeIcon>
+            </span>
+            <input
+              name="name"
+              placeholder="Username"
+              type="text"
+              class="form-control"
+              onChange={handleChange}
+            value={signupForm.name}
+              aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
+              required
+            />
+ 
+          </div>
+        </div>
+        <div>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend3">
+            <FontAwesomeIcon
+          icon={faAt}
+        ></FontAwesomeIcon>
+            </span>
+            <input
+              name="email"
+              placeholder="email"
+              type="email"
+              onChange={handleChange}
+            value={signupForm.email}
+              class="form-control"
+              aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
+              required
+            />
+            <div
+              id="validationServerUsernameFeedback"
+              class="invalid-feedback"
+            ></div>
+          </div>
+        </div>
+        <div>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend3">
+            <FontAwesomeIcon
+          icon={faPhone}
+        ></FontAwesomeIcon>
+            </span>
+            <input
+              name="number"
+              placeholder="mobile no"
+              type="text"
+              onChange={handleChange}
+            value={signupForm.number}
+              minlength="1" 
+              maxlength="10"
+              class="form-control"
+              aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
+              required
+            />
+            <div
+              id="validationServerUsernameFeedback"
+              class="invalid-feedback"
+            ></div>
+          </div>
+        </div>
+        <div>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend3">
+            <FontAwesomeIcon
+          icon={faLocationDot}
+        ></FontAwesomeIcon>
+            </span>
+            <input
+              name="address"
+              placeholder="address"
+              onChange={handleChange}
+            value={signupForm.address}
+              type="text"
+              class="form-control"
+              id="validationServerUsername"
+              aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
+              required
+            />
+            <div
+              id="validationServerUsernameFeedback"
+              class="invalid-feedback"
+            ></div>
+          </div>
+        </div>
+        <div>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend3">
+            <FontAwesomeIcon
+          icon={faKey}
+        ></FontAwesomeIcon>
+            </span>
+            <input
+              name="password"
+              placeholder="Password"
+              type="password"
+              onChange={handleChange}
+            value={signupForm.password}
+              class="form-control"
+              id="validationServerUsername"
+              aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
+              required
+            />
+            <div
+              id="validationServerUsernameFeedback"
+              class="invalid-feedback"
+            ></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend3">
+            <FontAwesomeIcon
+          icon={faKey}
+        ></FontAwesomeIcon>
+            </span>
+            <input
+              name="confirm_password"
+              placeholder="Confirm Password"
+              type="password"
+              onChange={handleChange}
+            value={signupForm.confirm_password}
+              class="form-control"
+              id="validationServerUsername"
+              aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
+              required
+            />
+            <div
+              id="validationServerUsernameFeedback"
+              class="invalid-feedback"
+            ></div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          {/* <div class="form-check d-flex">
                         <input class="form-check-input mt-4 mb-1" type="checkbox" value="" required />
                         <span className='mt-3 ms-3 text-black'>
                             Login As Admin
                         </span>
                     </div> */}
-                </div>
-                <div class="mt-3">
-                    <button class="btn btn-primary" style={{ width: "100%" }} type="submit">Login</button>
-                </div>
-            </form>
         </div>
-    )
+        <div class="mt-3">
+          <button
+            class="sign_btn"
+            style={{ width: "100%" }}
+            type="submit"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+<ToastContainer/> 
+      
+    </div>
+  );
 }
 
-export default Singup
+export default Singup;

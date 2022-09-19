@@ -1,7 +1,4 @@
 import { createContext, useState } from "react";
-
-
-
 export const apiContext = createContext();
 
 export const StateProvider = ({children})=>{

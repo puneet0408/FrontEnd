@@ -1,12 +1,8 @@
-.card
+/* .card
 {
-    width: 275px;
-    text-align: center;
-    background-color: whitesmoke;
-    color: black;
-    border-radius: 10px;
-    cursor: pointer;
-    position: relative;
+    flex: 1 1 10rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    padding:2rem;
 }
 .card__text{
     padding: 10px 1px px 0px;
@@ -18,10 +14,9 @@
 }
 .card img
 {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    height: 200px;
+    height: 25rem;
     width: 100%;
+    object-fit: cover;
 }
 .card__text button
 {
@@ -85,7 +80,7 @@
     font-size: 35px;
     font-weight: 500;
 }
-.xx
+.imgContainer
 {
     position: relative;
 }
@@ -99,7 +94,7 @@
     top: 0px;
     display: none;
 }
-.xx:hover  .description{ 
+.imgContainer:hover  .description{ 
     display: block;
 }
 @media only screen and (max-width: 632px)
@@ -108,4 +103,109 @@
     {
         width: 90%;
     }
+} */
+.packagecard{
+    padding: 1rem;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    z-index: 5;
+    flex-direction: column;
+    color: #000;
+    border-radius: 1.5rem;
+    box-shadow: inset 0 -3em 3em rgba(16, 9, 9, 0.1), 0 0 0 2px rgb(208, 198, 198),
+    0.3em 0.3em 1em rgba(248, 248, 248, 0.3);
+}
+.packagecard::before{
+    width: 80rem;
+    height:80rem;
+    left: -20rem;
+    background-color: #f0f5fa;
+    content: '';
+    /* opacity: .8 ; */
+    top: 12rem;
+    z-index: -1;
+    position: absolute;
+    animation: rotate 11s  linear infinite;
+    border-radius: 45%;
+  
+  }
+  .packagecard::after{
+    left: 0;
+    width: 80rem;
+    height:80rem;
+    border-radius: 47%;
+    background-color: #74CCF4;
+    content: '';
+    z-index: -1;
+    left: -20rem;
+    opacity: .3;
+    top: 13rem;
+    position: absolute;
+    animation: rotate 10s  linear infinite;
+  
+  }
+  @keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+  }
+
+.packageimage{
+    height: 10rem;
+  width: 100%;
+  object-fit: cover; 
+}
+
+.card_destination{
+   text-transform: capitalize;
+}
+
+.cardName{
+font-size: 1.2rem;
+}
+ 
+
+.cardisc,.packagePrice{
+    font: 1rem sans-serif;
+    text-transform: capitalize;
+    margin-top: .2rem;
+}
+ 
+ 
+
+ 
+ 
+.buypackage , .addtoCartpackage{
+    margin:.5rem 0 ;
+    width: 100%;
+padding: .5rem;
+border-radius: .5rem;
+background-color: rgb(220, 155, 25);
+cursor: pointer;
+}
+
+.buypackage:hover{
+    background: rgba(225, 165, 0, 0.2);
+    color:  rgb(220, 155, 25);
+}
+
+ .addtoCartpackage:hover{
+    background: rgba(225, 165, 0, 0.2);
+    color:  rgb(220, 155, 25);
+  }
+
+ 
+.readMoreBtn{
+    padding: .7rem;
+    margin-top:.3rem;
+    width: 100%;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 800;
+   background: linear-gradient(#e66465, #9198e5);;
 }

@@ -1,0 +1,112 @@
+ .contactPage{
+    /* height: 100vh; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    
+ }
+ 
+
+
+ .contactForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+     background-color: #fff;
+    padding: 1rem;
+     border-radius: 2rem;
+     position: relative;
+     overflow: hidden;
+     /* background-color: transparent; */
+     z-index: 5;
+ }
+
+ .input-group-text{
+  color: #000;
+ }
+
+ .contactForm::before{
+   width: 80rem;
+   height:80rem;
+   left: -20rem;
+   background-color: #f0f5fa;
+   content: '';
+   top: 12rem;
+   z-index: -1;
+   position: absolute;
+   animation: rotate 11s  linear infinite;
+   border-radius: 45%;
+   
+ 
+ }
+ .contactForm::after{
+   left: 0;
+   width: 80rem;
+   height:80rem;
+   border-radius: 47%;
+   background-color: #74CCF4;
+   content: '';
+   z-index: -1;
+   left: -20rem;
+   opacity: .3;
+   top: 13rem;
+   position: absolute;
+   animation: rotate 10s  linear infinite;
+ 
+ }
+ @keyframes rotate{
+   0%{
+       transform: rotate(0deg);
+   }
+   100%{
+       transform: rotate(360deg);
+   }
+ }
+
+ .inTouch{
+   color: black;
+ }
+
+ .name , .cont ,.Comment {
+    text-transform: none;
+ margin:.5rem;
+ padding:  1rem;
+ border-radius: 10px;
+ width: 80%;
+ }
+
+ 
+   .Comment{
+    resize: none;
+   }
+
+.Form_button{
+  width: 35%;
+  text-align: center;
+  color: #fff ;
+  background-color:#659DBD;
+  border: 1px solid #659DBD;
+  border-radius: 10px;
+  padding: 10px 10px;
+  cursor: pointer;
+ }
+
+ .Form_button:hover{
+  border: #74CCF4;
+  background-color: #fff;
+  color: #74CCF4;
+ }
+
+ .contactFields{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 20rem;
+ }
+
+ .contactIcon{
+color: #000;
+ }

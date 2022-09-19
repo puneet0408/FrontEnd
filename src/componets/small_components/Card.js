@@ -1,71 +1,87 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiContext } from "../../ContextApi/ContextProvider";
-import "./Card.css"
+import "./Card.css";
 let Card = (props) => {
-    const navigate = useNavigate();
-    let [cartadd, setCartadd] = useState(false);
-    let [memberCount, setMemberCount] = useState(1);
-    let { cart, setCart } = useContext(apiContext);
-    //Function to increase and decrese member count
-    const add = (event) => {
-        setMemberCount(memberCount + 1);
+  const navigate = useNavigate();
+  let [cartadd, setCartadd] = useState(false);
+  let [memberCount, setMemberCount] = useState(1);
+  let { cart, setCart } = useContext(apiContext);
+  //Function to increase and decrese member count
+  // const add = () => {
+  //   setMemberCount(memberCount + 1);
+  // };
+  // const rem = () => {
+  //   if (memberCount !== 1) {
+  //     setMemberCount(memberCount - 1);
+  //   }
+  // };
+  //Add and remove from Cart
+  const cartManupulation = () => {
+    // console.log(cartadd);
+    if (!cartadd) {
+      setCart([...cart, { id: props.id, count: memberCount }]);
+      setCartadd(!cartadd);
+    } else {
+      let newcart = cart.filter((ele) => {
+        return ele.id !== props.id;
+      });
+      setCart(newcart);
+      setCartadd(!cartadd);
     }
-    const rem = (event) => {
-        if (memberCount != 1) {
-            setMemberCount(memberCount - 1);
-        }
-    }
-    //Add and remove from Cart
-    const cartManupulation = (event) => {
-        // console.log(cartadd);
-        if (!cartadd) {
+  };
+  console.log(cart, "cart");
 
-            setCart([...cart, { id: props.id, count: memberCount }]);
-            setCartadd(!cartadd);
-        }
-        else {
-            let newcart = cart.filter(ele => { return ele.id != props.id });
-            setCart(newcart);
-            setCartadd(!cartadd);
-        }
+  const handlePage = () => {
+    navigate(`/cardetails`, { state: { props } });
+  };
 
-
-    }
-    console.log(cart);
-    const handlePage = () => {
-      
-        navigate('/cardetails', { state: {props } });
-
-    }
-    return (
-        <div >
-            <div className="card" onClick={handlePage}>
-                <div className="xx">
-                    <img className="image" src={props.link} />
-                    <div className="description">{props.description}</div>
-                </div>
-                <div className="card__text">
-                    <h2 className="name">{props.packageName}</h2>
-                    <h4 className="main_destination">
-                        {
-                            props.main_destination.map((data) => {
-                                return (
-                                    <span>{`${data},`} </span>
-                                )
-                            })
-                        }
-                    </h4>
-                    <h2 className="price">{props.price} Per person </h2>
-                    <div className="member-count">
-                        <button className="min" onClick={(e)=>{e.stopPropagation();rem()}}>-</button>
-                        <p>Member: {memberCount}</p>
-                        <button className="add" onClick={(e)=>{e.stopPropagation();add()}}>+</button>
-                    </div>
-                    <button className="buyButton">Buy Now</button>
-                    <button className="addtoCart" onClick={cartManupulation}>{!cartadd ? "Add to Cart" : "Remove from cart"}</button>
-                </div>
-            </div>
-        </div>);
+  const goToSignUpPage=()=>{
+    navigate("/singin")
+  }
+  return (
+    <div>
+      <div className="packagecard">
+        <img className="packageimage" alt="link" src={props.link} />
+        <div className="card__text">
+          <h3 className="cardName">{props.packageName}</h3>
+          <p className="card_destination">{props.main_destination}</p>
+          <h6 className="packagePrice">{props.price} / person </h6>
+          {/* <div className="member_count">
+            <button
+              className="min sign"
+              onClick={(e) => {
+                e.stopPropagation();
+                rem();
+              }}
+            >
+              -
+            </button>
+            <p>Member: {memberCount}</p>
+            <button
+              className="add sign "
+              onClick={(e) => {
+                e.stopPropagation();
+                add();
+              }}
+            >
+              +
+            </button>
+          </div> */}
+         
+            <button onClick={goToSignUpPage}  className="buypackage">book Now</button>
+            <button className="addtoCartpackage" onClick={cartManupulation}>
+              {!cartadd ? "Add to Cart" : "Remove from cart"}
+            </button>
+          
+          <div className="readMore">
+            <button key={props.id} onClick={handlePage} className="readMoreBtn">
+              {props.description}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 export default Card;

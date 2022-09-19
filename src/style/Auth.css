@@ -25,9 +25,14 @@
     border-radius: 20px;
     padding: 10px 10px;
     cursor: pointer;
-
-
 }
+
+.authBodySwapButton button:hover {
+  color: #659DBD ;
+  border: 1px solid #659DBD;
+  background-color: #fff;
+}
+
 .activeSign{
     background-color: #fff !important;
     color: #000 !important;
@@ -38,15 +43,25 @@
     flex-direction: column !important;
     justify-content: center !important;
     /* align-items: center; */
-    margin-left: 2rem !important;
-    margin-right: 2rem !important;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
 }
 .signin form{
     display: flex;
     flex-direction: column !important;
     justify-content: center !important;
-   
 }
+ .signup input{
+  width: 90% !important;
+}
+.signin input{
+  width: 90% !important;
+}
+
+.form-control{
+  margin: .5rem 0;
+}
+
 .box{
     position: relative;
     overflow: hidden;
@@ -123,11 +138,24 @@
     font-size: 20px;
     padding: 5px;
     color:#fff;
-  }
+    background-color: #74CCF4;
+}
+
+.signup button:hover{
+  color:#74CCF4;
+  background-color: #fff;
+  border: #74CCF4;
+}
+.signin button:hover{
+  color:#74CCF4;
+  background-color: #fff;
+  border: #74CCF4;
+}
+
   .check{
     display: flex;
-
   }
+
   .check span{
     color: #000;
     margin-left: 5px;
@@ -139,3 +167,5 @@
     outline: none !important;
     cursor: pointer;
   }
+
+   

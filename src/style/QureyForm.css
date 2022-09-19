@@ -1,0 +1,40 @@
+.Query-form {
+  background-color: transparent;
+  border-radius: 10%;
+  border: 0.2rem solid rgb(85, 77, 77);
+}
+
+.QuickQuery {
+  text-align: center;
+}
+.Query-form form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.SubmitQuery {
+  width: 35%;
+  text-align: center;
+  color: #fff ;
+  background-color:#659DBD;
+  border: 1px solid #659DBD;
+  border-radius: 10px;
+  padding: 10px 10px;
+  cursor: pointer;
+}
+
+.SubmitQuery:hover{
+  border: #74CCF4;
+  background-color: #fff;
+  color: #74CCF4;
+ }
+
+.formInput {
+  background-color: #fff;
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+}
