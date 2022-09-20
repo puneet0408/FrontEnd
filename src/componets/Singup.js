@@ -1,5 +1,5 @@
 
-import React ,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "react-toastify/dist/ReactToastify.css";
 //import { useNavigate } from "react-router-dom"
 import {
@@ -32,10 +32,10 @@ function Singup() {
     address: "",
     password: "",
     confirm_password: "",
-   
+
   });
 
-  const [error, setError] =useState({});
+  const [error, setError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
   function handleChange(event) {
@@ -59,10 +59,10 @@ function Singup() {
       var config = {
         method: 'post',
         url: 'https://touristbackend.herokuapp.com/api/signup',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json'
         },
-        data : data
+        data: data
       };
       axios(config)
         .then(function (response) {
@@ -74,8 +74,9 @@ function Singup() {
           toast(error.response.data.error);
         });
     }
+  }
 
-  
+
 
   useEffect(() => {
     console.log(error);
@@ -88,7 +89,7 @@ function Singup() {
     const error = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.name) {
-       (error.name = "name is required");
+      (error.name = "name is required");
     } else if (values.name.length > 15) {
       error.name = "Must be 15 characters or less";
     }
@@ -126,7 +127,7 @@ function Singup() {
             <span class="input-group-text" id="inputGroupPrepend3">
 
               <FontAwesomeIcon icon={faSignature}></FontAwesomeIcon>
-              
+
             </span>
             <input
               name="name"
