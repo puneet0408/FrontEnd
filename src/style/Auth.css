@@ -107,11 +107,11 @@
   }
   .signup input{
     height: 30px;
-    border-radius: 10px;
     width: 100%;
     padding-left: 10px;
     outline: none;
     border-radius: 20px;
+    text-transform: none;
 
 
   }
@@ -122,7 +122,7 @@
     padding-left: 10px;
     outline: none;
     border-radius: 20px;
-
+    text-transform: none;
 
   }
   .signup button, .signin button{
@@ -168,4 +168,14 @@
     cursor: pointer;
   }
 
+  .error{
+color: red;
+text-transform: capitalize;
+  }
+
+  .messageSuccess{
+    padding: 3rem;
+    background-color: #fff;
+    color: #000;
+  }
    
