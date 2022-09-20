@@ -1,24 +1,25 @@
+import axios from 'axios'
 import React from "react";
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
-//import { useNavigate } from "react-router-dom"
+import 'react-toastify/dist/ReactToastify.css';
 import {
-  faSignature,faAt,faPhone,faLocationDot,faKey
-  
-   } from "@fortawesome/free-solid-svg-icons";
-   import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+  faSignature, faAt, faPhone, faLocationDot, faKey
+
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { singUpApi } from "../BackendApi/auth";
 
 function Singup() {
 
 
-  
+
   const [signupForm, setForm] = React.useState({
     name: "",
     email: "",
     number: "",
     address: "",
     password: "",
-    confirm_password:""
+    confirm_password: ""
   });
   function handleChange(event) {
     const { name, value } = event.target;
@@ -28,17 +29,33 @@ function Singup() {
     }));
   }
 
-   
+
   function handleSubmit(event) {
     event.preventDefault();
     event.target.reset();
-    console.log(signupForm);
-    if (signupForm.password  !==signupForm.confirm_password) {
+    if (signupForm.password !== signupForm.confirm_password) {
       alert("Passwords don't match");
-  } else {
+    } else {
       // make API call
-  }
-  toast( "signup sucessfully")
+      let data = JSON.stringify(signupForm);
+      var config = {
+        method: 'post',
+        url: 'https://touristbackend.herokuapp.com/api/signup',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+      axios(config)
+        .then(function (response) {
+          console.log(response.data.message);
+          toast(response.data.message);
+        })
+        .catch(function (error) {
+          console.log(error.response.data.error);
+          toast(error.response.data.error);
+        });
+    }
   }
 
   return (
@@ -47,36 +64,36 @@ function Singup() {
         <div>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend3">
-            <FontAwesomeIcon
-          icon={faSignature}
-        ></FontAwesomeIcon>
+              <FontAwesomeIcon
+                icon={faSignature}
+              ></FontAwesomeIcon>
             </span>
             <input
               name="name"
-              placeholder="Username"
+              placeholder="Full Name"
               type="text"
               class="form-control"
               onChange={handleChange}
-            value={signupForm.name}
+              value={signupForm.name}
               aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
               required
             />
- 
+
           </div>
         </div>
         <div>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend3">
-            <FontAwesomeIcon
-          icon={faAt}
-        ></FontAwesomeIcon>
+              <FontAwesomeIcon
+                icon={faAt}
+              ></FontAwesomeIcon>
             </span>
             <input
               name="email"
               placeholder="email"
               type="email"
               onChange={handleChange}
-            value={signupForm.email}
+              value={signupForm.email}
               class="form-control"
               aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
               required
@@ -90,17 +107,17 @@ function Singup() {
         <div>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend3">
-            <FontAwesomeIcon
-          icon={faPhone}
-        ></FontAwesomeIcon>
+              <FontAwesomeIcon
+                icon={faPhone}
+              ></FontAwesomeIcon>
             </span>
             <input
               name="number"
               placeholder="mobile no"
               type="text"
               onChange={handleChange}
-            value={signupForm.number}
-              minlength="1" 
+              value={signupForm.number}
+              minlength="1"
               maxlength="10"
               class="form-control"
               aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
@@ -115,15 +132,15 @@ function Singup() {
         <div>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend3">
-            <FontAwesomeIcon
-          icon={faLocationDot}
-        ></FontAwesomeIcon>
+              <FontAwesomeIcon
+                icon={faLocationDot}
+              ></FontAwesomeIcon>
             </span>
             <input
               name="address"
               placeholder="address"
               onChange={handleChange}
-            value={signupForm.address}
+              value={signupForm.address}
               type="text"
               class="form-control"
               id="validationServerUsername"
@@ -139,16 +156,16 @@ function Singup() {
         <div>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend3">
-            <FontAwesomeIcon
-          icon={faKey}
-        ></FontAwesomeIcon>
+              <FontAwesomeIcon
+                icon={faKey}
+              ></FontAwesomeIcon>
             </span>
             <input
               name="password"
               placeholder="Password"
               type="password"
               onChange={handleChange}
-            value={signupForm.password}
+              value={signupForm.password}
               class="form-control"
               id="validationServerUsername"
               aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
@@ -164,16 +181,16 @@ function Singup() {
         <div>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend3">
-            <FontAwesomeIcon
-          icon={faKey}
-        ></FontAwesomeIcon>
+              <FontAwesomeIcon
+                icon={faKey}
+              ></FontAwesomeIcon>
             </span>
             <input
               name="confirm_password"
               placeholder="Confirm Password"
               type="password"
               onChange={handleChange}
-            value={signupForm.confirm_password}
+              value={signupForm.confirm_password}
               class="form-control"
               id="validationServerUsername"
               aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
@@ -203,8 +220,8 @@ function Singup() {
           </button>
         </div>
       </form>
-<ToastContainer/> 
-      
+      <ToastContainer />
+
     </div>
   );
 }
