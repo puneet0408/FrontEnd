@@ -1,14 +1,14 @@
 import React ,{useEffect,useState} from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-//import axios from "axios";
+import axios from "axios";
 import "../style/Auth.css";
 //import { useNavigate } from "react-router-dom";
 import {
-  faAt,faKey
-  
-   } from "@fortawesome/free-solid-svg-icons";
-   import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+  faAt, faKey
+
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Singin() {
   //   const history = useNavigate();
@@ -16,7 +16,7 @@ function Singin() {
   //   const [email, setEmail] = useState();
   //   const [password, setPassword] = useState();
   //   const [load, setLoad] = useState(false);
-  
+
   const [signinForm, setForm] = React.useState({
     email: "",
     password: "",
@@ -32,16 +32,26 @@ function Singin() {
       [name]: value,
     }));
   }
-
-
-
-   
   function handleSubmit(event) {
     event.preventDefault();
-    setError(validate(signinForm));
-    setIsSubmit(true)
-   // toast(" signin sucessfully ");
-     
+    var config = {
+      method: 'post',
+      url: 'https://touristbackend.herokuapp.com/api/login',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: signinForm
+    };
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    toast(" signin sucessfully ");
+
+
   }
 
   
@@ -75,15 +85,15 @@ function Singin() {
         <div class="">
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend3">
-            <FontAwesomeIcon
-          icon={faAt}
-        ></FontAwesomeIcon>
+              <FontAwesomeIcon
+                icon={faAt}
+              ></FontAwesomeIcon>
             </span>
             <input
-            name="email"
+              name="email"
               placeholder="email"
               onChange={handleChange}
-            value={signinForm.email}
+              value={signinForm.email}
               type="email"
               class="form-control"
             />
@@ -93,9 +103,9 @@ function Singin() {
         <div>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend3">
-            <FontAwesomeIcon
-          icon={faKey}
-        ></FontAwesomeIcon>
+              <FontAwesomeIcon
+                icon={faKey}
+              ></FontAwesomeIcon>
             </span>
             <input
               name="password"
@@ -122,13 +132,13 @@ function Singin() {
             class="sign_btn"
             style={{ width: "100%" }}
             type="submit"
-            onSubmit={handleSubmit} 
+            onSubmit={handleSubmit}
           >
             Singin
           </button>
         </div>
       </form>
-<ToastContainer/>
+      <ToastContainer />
     </div>
   );
 }
