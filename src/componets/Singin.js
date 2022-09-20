@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useEffect,useState} from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //import axios from "axios";
@@ -21,6 +21,10 @@ function Singin() {
     email: "",
     password: "",
   });
+
+  const [error, setError] =useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+
   function handleChange(event) {
     const { name, value } = event.target;
     setForm((prevInput) => ({
@@ -29,17 +33,45 @@ function Singin() {
     }));
   }
 
+
+
    
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(signinForm);
-    toast(" signin sucessfully ");
+    setError(validate(signinForm));
+    setIsSubmit(true)
+   // toast(" signin sucessfully ");
      
   }
 
+  
+  useEffect(() => {
+    console.log(error);
+    if (Object.keys(error).length === 0 && isSubmit) {
+      toast("signin sucessfully")
+    }
+  }, [error]);
+
+  const validate = (values) => {
+    const error = {};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+ 
+
+    if (!values.email) {
+      error.email = "email is required";
+    } else if (!regex.test(values.email)) {
+      error.email = "this is not a valid format";
+    }
+
+    if (!(values.password)) {
+      error.password = "password is required";
+    }
+    return error;
+  };
+
   return (
     <div className="signin">
-      <form style={{ width: "100%" }}>
+      <form onSubmit={handleSubmit}  style={{ width: "100%" }}>
         <div class="">
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend3">
@@ -54,9 +86,8 @@ function Singin() {
             value={signinForm.email}
               type="email"
               class="form-control"
-              aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
-              required
             />
+                 <p className="error">{error.email}</p>
           </div>
         </div>
         <div>
@@ -67,19 +98,14 @@ function Singin() {
         ></FontAwesomeIcon>
             </span>
             <input
+              name="password"
               placeholder="Password"
-              type="pasword"
+              type="password"
               onChange={handleChange}
-            value={signinForm.password}
+              value={signinForm.password}
               class="form-control"
-              id="validationServerUsername"
-              aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
-              required
             />
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            ></div>
+                 <p className="error">{error.password}</p>
           </div>
         </div>
         <div class="col-md-8 check">
@@ -87,7 +113,6 @@ function Singin() {
             <input
               type="checkbox"
               value=""
-              required
             />
           </div>
           <span className="mt-3 ms-3">Login As Admin</span>

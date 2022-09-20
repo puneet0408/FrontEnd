@@ -9,6 +9,8 @@ import {
    } from "@fortawesome/free-solid-svg-icons";
    import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
+
 export default function Contact() {
   const [form, setForm] = React.useState({
     name: "",
@@ -24,12 +26,38 @@ export default function Contact() {
     }));
   }
 
+  const validateCoustumer = values => {
+    const errors = {};
+  
+    if (!values.name) {
+      errors.name = "enter your name";
+    } else if (values.name.length > 15) {
+      errors.name = "Must be 15 characters or less";
+    }
+  
+    if (!values.email) {
+      errors.email = "enter your email adress";
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+      errors.email = "Invalid email address";
+    }
+  
+    if (!values.number) {
+      errors.number = "fill mobile number";
+    } else if (values.number.length>=10) {
+      errors.number = "Invalid number";
+    }
+  if(values.password !== values.confirm_password){
+    errors.confirm_password="password didn't match"
+  }
+    return errors;
+  };
    
   function handleSubmit(event) {
     event.preventDefault();
     event.target.reset();
     console.log(form);
     toast("data submit sucessfully")
+    validateCoustumer();
   
   }
 
