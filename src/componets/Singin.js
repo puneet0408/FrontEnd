@@ -57,7 +57,6 @@ function Singin() {
       toast("signin sucessfully")
     }
   }, [error]);
-
   const validate = (values) => {
     const error = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
