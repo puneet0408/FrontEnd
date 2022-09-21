@@ -44,14 +44,14 @@ function Singin() {
     };
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        console.log(response);
+        document.cookie=JSON.stringify(response.data);
+        toast(" signin sucessfully ");
       })
       .catch(function (error) {
         console.log(error);
+        toast(error.response.data.error);
       });
-    toast(" signin sucessfully ");
-
-
   }
 
   
