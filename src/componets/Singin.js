@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import "../style/Auth.css";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   faAt, faKey
 
@@ -11,12 +11,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Singin() {
-  //   const history = useNavigate();
-  //   const [show, setShowpasword] = useState(false);
-  //   const [email, setEmail] = useState();
-  //   const [password, setPassword] = useState();
-  //   const [load, setLoad] = useState(false);
-
   const [signinForm, setForm] = React.useState({
     email: "",
     password: "",
@@ -34,6 +28,8 @@ function Singin() {
   }
   function handleSubmit(event) {
     event.preventDefault();
+    // setIsSubmit(true);
+    setError(validate(signinForm));
     var config = {
       method: 'post',
       url: 'https://touristbackend.herokuapp.com/api/login',
@@ -44,14 +40,14 @@ function Singin() {
     };
     axios(config)
       .then(function (response) {
-        console.log(response);
-        document.cookie=JSON.stringify(response.data);
-        toast(" signin sucessfully ");
+        console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.log(error);
-        toast(error.response.data.error);
       });
+    toast(" signin sucessfully ");
+
+
   }
 
   
@@ -80,6 +76,7 @@ function Singin() {
   };
 
   return (
+ 
     <div className="signin">
       <form onSubmit={handleSubmit}  style={{ width: "100%" }}>
         <div class="">
@@ -134,13 +131,13 @@ function Singin() {
             type="submit"
             onSubmit={handleSubmit}
           >
-            Singin
+            login
           </button>
         </div>
       </form>
       <ToastContainer />
     </div>
-  );
-}
+    )};
+
 
 export default Singin;

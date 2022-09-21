@@ -1,7 +1,6 @@
 
-import React, { useState, useEffect } from "react";
+import React ,{useState,useEffect} from "react";
 import "react-toastify/dist/ReactToastify.css";
-//import { useNavigate } from "react-router-dom"
 import {
   faSignature,
   faAt,
@@ -20,7 +19,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import { singUpApi } from "../BackendApi/auth";
 
-function Singup() {
+function Singup(props) {
 
 
 
@@ -32,10 +31,21 @@ function Singup() {
     address: "",
     password: "",
     confirm_password: "",
-
+   
   });
 
-  const [error, setError] = useState({});
+  const clearForm = () => {
+
+    setForm({   name: "",
+    email: "",
+    number: "",
+    address: "",
+    password: "",
+    confirm_password: "",})
+
+}
+
+  const [error, setError] =useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
   function handleChange(event) {
@@ -48,32 +58,11 @@ function Singup() {
 
 
 
-  function handleSubmit(event) {
+  function HandleSubmit(event) {
     event.preventDefault();
     event.target.reset();
-    if (signupForm.password !== signupForm.confirm_password) {
-      alert("Passwords don't match");
-    } else {
-      // make API call
-      let data = JSON.stringify(signupForm);
-      var config = {
-        method: 'post',
-        url: 'https://touristbackend.herokuapp.com/api/signup',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: data
-      };
-      axios(config)
-        .then(function (response) {
-          console.log(response.data.message);
-          toast(response.data.message);
-        })
-        .catch(function (error) {
-          console.log(error.response.data.error);
-          toast(error.response.data.error);
-        });
-    }
+    setError(validate(signupForm));
+    setIsSubmit(true)
   }
 
 
@@ -81,7 +70,7 @@ function Singup() {
   useEffect(() => {
     console.log(error);
     if (Object.keys(error).length === 0 && isSubmit) {
-      console.log(signupForm);
+         console.log("form submit");
     }
   }, [error]);
 
@@ -89,45 +78,65 @@ function Singup() {
     const error = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.name) {
-      (error.name = "name is required");
+       (error.name = "name is required");
     } else if (values.name.length > 15) {
       error.name = "Must be 15 characters or less";
     }
 
-    if (!values.email) {
+    else if (!values.email) {
       error.email = "email is required";
     } else if (!regex.test(values.email)) {
       error.email = "this is not a valid format";
     }
 
-    if (!values.number) {
+    else if (!values.number) {
       error.number = "mobile No is required";
     } else if (values.number.length < 10) {
       error.number = "atleast 10 number must be require";
     } else if (values.number.length > 10) {
       error.number = "number more then 10 will not be acceptable";
     }
-    if (!(values.password && values.confirm_password)) {
+    else if (!(values.password && values.confirm_password)) {
       error.confirm_password = "password is required";
       error.password = "password is required";
     } else if (values.password !== values.confirm_password) {
       error.confirm_password = "password did'nt match";
+    }
+    else {
+      // make API call
+      let data = JSON.stringify(signupForm);
+      var config = {
+        method: 'post',
+        url: 'https://touristbackend.herokuapp.com/api/signup',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+      axios(config)
+        .then(function (response) {
+          console.log(response.data.message);
+          toast(response.data.message);
+          window.location.reload();
+          clearForm();
+        })
+        .catch(function (error) {
+          console.log(error.response.data.error);
+          toast(error.response.data.error);
+        });
     }
     return error;
   };
 
   return (
     <div className="signup">
-
-
-
-      <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+      <form onSubmit={HandleSubmit} style={{ width: "100%" }}>
         <div>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend3">
 
               <FontAwesomeIcon icon={faSignature}></FontAwesomeIcon>
-
+              
             </span>
             <input
               name="name"
@@ -241,7 +250,7 @@ function Singup() {
         </div>
         <div>
           <button class="sign_btn" style={{ width: "100%" }} type="submit">
-            Login
+            Signin
           </button>
         </div>
       </form>

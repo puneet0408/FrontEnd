@@ -179,3 +179,9 @@ text-transform: capitalize;
     color: #000;
   }
    
+  .homePgLink{
+    color: #fff;
+    text-decoration: none;
+    padding: 2rem;
+    background: #74CCF4;
+  }
