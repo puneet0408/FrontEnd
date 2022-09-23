@@ -1,9 +1,10 @@
-import React ,{useEffect,useState} from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
 import "../style/Auth.css";
-import { useNavigate } from "react-router-dom";
+import {apiContext} from "../ContextApi/ContextProvider"
 import {
   faAt, faKey
 
@@ -11,12 +12,14 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Singin() {
+  let {logedin,setLogedin} = useContext(apiContext);
+  const navigate = useNavigate();
   const [signinForm, setForm] = React.useState({
     email: "",
     password: "",
   });
 
-  const [error, setError] =useState({});
+  const [error, setError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
   function handleChange(event) {
@@ -40,17 +43,21 @@ function Singin() {
     };
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        console.log(response.data.id);
+        localStorage.setItem("id",response.data.id);
+        localStorage.setItem("name",response.data.name);
+        localStorage.setItem("role",response.data.role);
+        setLogedin(true);
+        navigate("/");
       })
       .catch(function (error) {
         console.log(error);
       });
-    toast(" signin sucessfully ");
 
 
   }
 
-  
+
   useEffect(() => {
     console.log(error);
     if (Object.keys(error).length === 0 && isSubmit) {
@@ -60,8 +67,6 @@ function Singin() {
   const validate = (values) => {
     const error = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
- 
-
     if (!values.email) {
       error.email = "email is required";
     } else if (!regex.test(values.email)) {
@@ -75,9 +80,9 @@ function Singin() {
   };
 
   return (
- 
+
     <div className="signin">
-      <form onSubmit={handleSubmit}  style={{ width: "100%" }}>
+      <form onSubmit={handleSubmit} style={{ width: "100%" }}>
         <div class="">
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend3">
@@ -93,7 +98,7 @@ function Singin() {
               type="email"
               class="form-control"
             />
-                 <p className="error">{error.email}</p>
+            <p className="error">{error.email}</p>
           </div>
         </div>
         <div>
@@ -111,7 +116,7 @@ function Singin() {
               value={signinForm.password}
               class="form-control"
             />
-                 <p className="error">{error.password}</p>
+            <p className="error">{error.password}</p>
           </div>
         </div>
         <div class="col-md-8 check">
@@ -136,7 +141,8 @@ function Singin() {
       </form>
       <ToastContainer />
     </div>
-    )};
+  )
+};
 
 
 export default Singin;

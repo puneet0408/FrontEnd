@@ -4,20 +4,20 @@ import Singup from "./Singup";
 import "../style/Auth.css";
 // import axios from 'axios'
 function Authentication() {
-  const [show, shetShow] = useState(true);
+  const [show, setShow] = useState(true);
 
   return (
     <div className="auth ">
       <div className="authBody box ">
         <div className="authBodySwapButton">
           <button
-            onClick={() => shetShow(true)}
+            onClick={() => setShow(true)}
             className={`${show ? "" : "activeSign"}`}
           >
             Login
           </button>
           <button
-            onClick={() => shetShow(false)}
+            onClick={() => setShow(false)}
             className={`${show ? "activeSign" : ""}`}
           >
             Register
@@ -25,7 +25,7 @@ function Authentication() {
         </div>
         <div>
           {show ? <Singin /> : <Singup 
-          onNevigate={() => shetShow(false)}
+          onNevigate={() => setShow(false)}
            />}
         </div>
       </div>

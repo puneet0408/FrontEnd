@@ -15,7 +15,8 @@ const Navbar = () => {
     }
     let logout = () => 
     {
-        setLogedin(!logedin);
+        setLogedin(false);
+        localStorage.clear();
     }
     return (
         <>
