@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"
 import { apiContext } from "../../ContextApi/ContextProvider";
 import "./Card.css";
 let Card = (props) => {
@@ -7,7 +8,7 @@ let Card = (props) => {
   let [cartadd, setCartadd] = useState(false);
   let [memberCount, setMemberCount] = useState(1);
   let { cart, setCart } = useContext(apiContext);
-  let {logedin,setLogedin} = useContext(apiContext);
+  let { logedin, setLogedin } = useContext(apiContext);
   //Function to increase and decrese member count
   // const add = () => {
   //   setMemberCount(memberCount + 1);
@@ -36,13 +37,36 @@ let Card = (props) => {
     navigate(`/cardetails`, { state: { props } });
   };
 
-  const goToSignUpPage=()=>{
+  const goToSignUpPage = () => {
     navigate("/singin")
   }
 
-  let buypackage = () => 
-  {
+  let buypackage = () => {
     console.log("Buy Package");
+    let data = 
+    {
+      id:localStorage.getItem("id"),
+      Package:props._id,
+      name:"default",
+      member:1
+    }
+    let config = {
+      method: 'post',
+      url: 'https://touristbackend.herokuapp.com/api/package/buypackage',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      withCredentials: true,
+      data: data
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
   return (
     <div>
@@ -73,12 +97,12 @@ let Card = (props) => {
               +
             </button>
           </div> */}
-         
-            <button onClick={logedin?buypackage:goToSignUpPage}  className="buypackage">book Now</button>
-            <button className="addtoCartpackage" onClick={cartManupulation}>
-              {!cartadd ? "Add to Cart" : "Remove from cart"}
-            </button>
-          
+
+          <button onClick={logedin ? buypackage : goToSignUpPage} className="buypackage">book Now</button>
+          <button className="addtoCartpackage" onClick={cartManupulation}>
+            {!cartadd ? "Add to Cart" : "Remove from cart"}
+          </button>
+
           <div className="readMore">
             <button key={props.id} onClick={handlePage} className="readMoreBtn">
               Read More
