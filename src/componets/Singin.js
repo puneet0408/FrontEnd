@@ -10,6 +10,7 @@ import {
 
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { baseUrl } from "../BackendApi/auth";
 
 function Singin() {
   let {logedin,setLogedin} = useContext(apiContext);
@@ -35,7 +36,7 @@ function Singin() {
     setError(validate(signinForm));
     var config = {
       method: 'post',
-      url: 'https://touristbackend.herokuapp.com/api/login',
+      url: baseUrl+'/login',
       headers: {
         'Content-Type': 'application/json'
       },

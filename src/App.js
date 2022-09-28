@@ -8,6 +8,7 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Authentication from './componets/Authentication';
 import CarDetails from './componets/small_components/CarDetails';
 import Contact from './componets/Contact';
+import Payment from './componets/Payment';
 function App() {
   //let [login,SetLogin] = useState(false);
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/singin' element={<Authentication/>} />
           <Route path='/cardetails' element={<CarDetails/>} />
           <Route path='/contact' element={<Contact/>}/>
+          <Route path='/payment' element={<Payment/>}/>
           </Route>
         </Routes>
     </BrowserRouter>

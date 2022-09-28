@@ -12,51 +12,10 @@ function temp(product) {
     <Card {...product} />
   );
 }
-// let products = [
-//   {
-//     packageName: "Him Darshan",
-//      id: "1",
-//     price: "5600",
-//     link: img1,
-//     main_destination: 'MechlodeGanj',
-//     description:"Read more"
-//   },
-//   {
-//     packageName: "Shimla Kuffri",
-//     id: "2",
-//     price: "6600",
-//     link: img1,
-//     main_destination: "Bhagsu Nag",
-//     description:"Read more"
-//   },
-//   {
-//     packageName: "Kullu Manali",
-//     id: "3",
-//     price: "7600",
-//     link: img1,
-//     main_destination: "BrjeshWari Temple",
-//     description:"Read more"
-//   },
-//   {
-//     packageName: "Dharmshala",
-//     id: "4",
-//     price: "8000",
-//     link: img1,
-//     main_destination:  "Naddi",
-//     description:"Read more"
-//   },
-//   {
-//     packageName: "Darjling Bharmor",
-//     id: "5",
-//     price: "2600",
-//     link: img1,
-//     main_destination: "kangra",
-//     description:"Read more"
-//   },
-// ];
 let Home = () => {
   // const { cart, setCart } = useContext(apiContext);
   let [products,setProucts]=useState([]);
+  console.log(process.env.NODE_ENV);
   useEffect(() => {
     //Fectching Products Data from Backend
     var config = {

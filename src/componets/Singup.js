@@ -17,7 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 
-import { singUpApi } from "../BackendApi/auth";
+import { baseUrl, singUpApi } from "../BackendApi/auth";
 
 function Singup(props) {
 
@@ -107,7 +107,7 @@ function Singup(props) {
       let data = JSON.stringify(signupForm);
       var config = {
         method: 'post',
-        url: 'https://touristbackend.herokuapp.com/api/signup',
+        url: baseUrl+'/signup',
         headers: { 
           'Content-Type': 'application/json'
         },
