@@ -1,13 +1,18 @@
 import React, { useEffect, useState, useContext, createContext } from "react";
-import { ToastContainer } from "react-toastify";
+
 import ForgetForm from "./forgetForm";
+import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
-import {  useNavigate } from "react-router-dom";
-import "react-toastify/dist/ReactToastify.css";
+import { Navigate, useNavigate } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
 import "../style/Auth.css";
-import { apiContext } from "../ContextApi/ContextProvider";
-import { faAt, faKey } from "@fortawesome/free-solid-svg-icons";
+import {apiContext} from "../ContextApi/ContextProvider"
+import {
+  faAt, faKey
+
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { baseUrl } from "../BackendApi/auth";
 
 const data = createContext();
 const data1 = createContext();
@@ -47,8 +52,8 @@ function Singin() {
       ...prevInput,
       [name]: value,
     }));
+  
     setError(validate(signinForm));
-
 
   }
   function handleSubmit(event) {
@@ -64,17 +69,16 @@ function Singin() {
   useEffect(() => {
     if(isSubmit){
       console.log("hlog dfd ");
-      var config = {
+    var config = {
         method: "post",
         url: "https://touristbackend.herokuapp.com/api/login",
-        headers: {
+      headers: {
           "Content-Type": "application/json",
-        },
+      },
         data: signinForm,
-      };
-      
-        axios(config)
-        .then(function (response) {
+    };        
+    axios(config)
+      .then(function (response) {
           console.log(response);
        
           localStorage.setItem("id", response.data.id);
@@ -89,15 +93,15 @@ function Singin() {
          {
               localStorage.setItem('admin',true)
          }
-          setLogedin(true);
-          navigate("/");
-        })
-        .catch(function (error) {
+        setLogedin(true);
+        navigate("/");
+      })
+      .catch(function (error) {
           setErrorMessage(error.response.data.error);
           StSubmitBtn({ btnText: "Login", disabled: false });
           setIsSubmit(false);
-        });
-      }
+      });
+  }
   }, [isSubmit]);
 
   const validate = (values) => {
@@ -107,7 +111,9 @@ function Singin() {
       error.email = "email is required";
     } else if (!regex.test(values.email)) {
       error.email = "this is not a valid format";
-    } else if (!values.password) {
+    }
+
+    else if (!(values.password)) {
       error.password = "password is required";
     }
     else if(!(values.password)){
