@@ -16,7 +16,7 @@ function Authentication() {
           >
             Login
           </button>
-          <button
+          <button 
             onClick={() => setShow(false)}
             className={`${show ? "activeSign" : ""}`}
           >
@@ -24,9 +24,7 @@ function Authentication() {
           </button>
         </div>
         <div>
-          {show ? <Singin /> : <Singup 
-          onNevigate={() => setShow(false)}
-           />}
+        {show ? <Singin /> : <Singup shetShow={setShow}/>}
         </div>
       </div>
     </div>

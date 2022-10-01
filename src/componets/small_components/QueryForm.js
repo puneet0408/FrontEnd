@@ -31,8 +31,9 @@ export default function QureyForm() {
 
   return (
     <div className="Query-form" >
- 
+ <div className="enqueryCont" >
           <h1 className="QuickQuery" >Quick Inquiry</h1>
+          </div>
           
     <form  onSubmit={handleSubmit}>
       <input

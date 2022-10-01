@@ -1,0 +1,44 @@
+
+.profileLogin{
+    width: 10rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+
+ 
+
+.profile {
+    min-width: 550px;
+     height: 93vh;
+     background: hsl(227, 11%, 15%);
+     display:flex;
+     align-items: center;
+     justify-content: center;
+    
+   }
+   
+   .about {
+     background-color: black;
+     width: 317px;
+     height: auto;
+     display: flex;
+     justify-content: center;
+     flex-direction:column;
+     align-items: center;
+   }
+   
+   .myImage {
+     width: 317px;
+     height: 317px;
+   }
+   
+   .name{
+    text-align: center;
+     font-family: "Inter", sans-serif;
+     color: #fff;
+     text-transform:uppercase;
+     margin-top: 0.5rem;
+   }
+   
+  

@@ -1,0 +1,344 @@
+
+
+.packageName {
+  margin-left:3rem;
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+
+.venu{
+  margin-left:3rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.packageName:hover {
+  color: rgb(207, 130, 35);
+}
+
+.starState {
+  margin-right: 1rem;
+  color: rgb(207, 130, 35);
+}
+
+.starState:hover {
+  color: #fff;
+}
+
+
+.containerHeading{
+  width: 100%;
+display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.productsinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.productHeading {
+  text-transform: uppercase;
+  margin: 2rem;
+}
+
+ .slider{
+  height: 250px;
+  margin: auto;
+  position: relative;
+  width: 70%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+ }
+
+ .slider_track{
+  display: flex;
+  width: calc(250*10);
+  animation: scroll 40s linear infinite;
+  background-color: #fff;
+ }
+
+ .slider_track:hover{
+  animation-play-state: paused;
+ }
+
+.slide{
+  height: 200px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  perspective: 100px;
+}
+
+.slide img{
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+}
+
+ 
+ 
+
+@keyframes scroll {
+  0%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(calc(-250px * 5));
+  }
+}
+
+.slider::before{
+  left: 0;
+  top: 0;
+}
+
+.slider::after{
+  left: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.btn_card {
+  padding: 10px 5px;
+  height: 35px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 5px;
+  color: #fff;
+  background-color: #74ccf4;
+}
+
+ 
+.famousPLaces:hover {
+
+  color: rgb(239, 138, 15);
+  text-decoration: underline;
+}
+
+.places {
+  text-transform: capitalize;
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.places:hover {
+  color: rgb(28, 255, 51);
+}
+.date {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+}
+.add_date {
+  margin-right: 1rem;
+}
+
+.famous_booking {
+ margin-left: 3rem;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.AllPlaces {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.booking_Side{
+  padding: 1rem;
+  /* justify-self: end; */
+  display: flex;
+}
+
+.booking_box {
+  padding: 1rem;
+  width: 60%;
+  background-color: #fff;
+  color: black;
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.capsule {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+.date_container {
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 15px 0px 0px 15px;
+}
+
+.currentDate{
+  margin: .5rem;
+  font-size: 1.2rem;
+  display: flex;
+  width: 100%;
+  justify-content:space-between;
+  align-items: center;
+}
+
+.guest_Container {
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 0px 15px 15px 0px;
+}
+
+.sign{
+  padding: 1rem;
+  border-radius: 50%;
+}
+
+
+ 
+
+
+.calender_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  background: rgb(255, 255, 255);
+  border-radius: 1rem;
+  box-shadow: rgb(0 0 0 / 20%) 0px 6px 20px;
+  overflow: hidden;
+  z-index: 1;
+  position: absolute;
+  width: 25rem;
+  height: 20rem;
+  cursor: pointer;
+}
+
+.addMember {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items:  center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 1rem;
+  box-shadow: rgb(0 0 0 / 20%) 0px 6px 20px;
+  overflow: hidden;
+  z-index: 1;
+  position: absolute;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+}
+
+.booking_price{
+  font-size: large;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.booking_price span{
+   font-size: small;
+}
+
+.member_count{
+  display: flex;
+  align-items:  center;
+  justify-content: space-between;
+}
+
+.memberInfo{
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  }
+  
+  .member{
+  color: black;
+  margin-right:2rem;
+  }
+ 
+  .memberNO{
+    margin: 1rem;
+  }
+
+.countNo{
+  display: flex;
+  /* justify-self:center; */
+  align-items: center;
+}
+
+ .aboutState{
+  padding: 2rem;
+ }
+
+ .aboutState h3{
+  font-size: 3rem;
+  text-transform: capitalize;
+ }
+
+
+ .aboutState p{
+  font-size: 1.5rem;
+  text-transform: capitalize;
+
+ }
+
+ @media only screen and (max-width: 1000px){
+  .currentDate{
+    font-size: 1rem;
+  }
+  .aboutState{
+    padding: 1rem;
+  }
+  .aboutState h3{
+    font-size: 2rem;
+    text-transform: capitalize;
+   }
+   .aboutState p{
+    font-size: 1rem;
+    text-transform: capitalize;
+   }
+}
+
+@media only screen and (max-width: 768px){
+  .currentDate{
+     display: flex;
+     flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 600px){
+.famous_booking{
+  display: flex;
+  flex-direction: column;
+}
+}
+ 
+
+@media only screen and (max-width: 500px){
+  .containerHeading h1{
+  font-size:1.5rem ;
+  }
+}
+  
+@media only screen and (max-width: 500px){
+  .containerHeading h1{
+  font-size:1rem ;
+  }
+}

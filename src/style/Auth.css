@@ -40,11 +40,10 @@
 }
 .signin, .signup{
     display: flex;
-    flex-direction: column !important;
-    justify-content: center !important;
-    /* align-items: center; */
-    margin-left: 1rem !important;
-    margin-right: 1rem !important;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1rem ;
+    margin-right: 1rem;
 }
 .signin form{
     display: flex;
@@ -58,13 +57,19 @@
   width: 90% !important;
 }
 
+.input-group{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .form-control{
   margin: .5rem 0;
 }
 
 .box{
     position: relative;
-    overflow: hidden;
+     overflow: hidden;
     background-color: transparent;
     z-index: 5;
   }
@@ -125,21 +130,7 @@
     text-transform: none;
 
   }
-  .signup button, .signin button{
-    padding: 10px 5px ;
-    height: 35px;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    border-radius: 20px;
-    margin-top: 10px;
-    width: 100%;
-    font-weight: 600;
-    font-size: 20px;
-    padding: 5px;
-    color:#fff;
-    background-color: #74CCF4;
-}
+ 
 
 .signup button:hover{
   color:#74CCF4;
@@ -151,6 +142,7 @@
   background-color: #fff;
   border: #74CCF4;
 }
+
 
   .check{
     display: flex;
@@ -185,3 +177,44 @@ text-transform: capitalize;
     padding: 2rem;
     background: #74CCF4;
   }
+
+ .forgetPassword{
+  color: #17a7ea;
+ text-transform: capitalize;
+  cursor: pointer;
+ }
+ .forgetPassword:hover{
+  text-decoration: underline;
+ }
+
+ 
+
+ .forgetform{
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items:  center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 1rem;
+  box-shadow: rgb(0 0 0 / 20%) 0px 6px 20px;
+  /* z-index: 8;
+  position: absolute;
+  top: 0%;
+  right: 0; */
+
+  width: auto;
+  height: auto;
+  cursor: pointer;
+ }
+
+ @media only screen and (max-width: 400px){
+ .activeSign{
+  font-size: .6rem;
+ }
+  .resetBtn ,.forgetBtn{
+    font-size: 1rem;
+  } 
+ }

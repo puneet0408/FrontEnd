@@ -35,14 +35,7 @@ function Singup(props) {
   });
 
   const clearForm = () => {
-
-    setForm({   name: "",
-    email: "",
-    number: "",
-    address: "",
-    password: "",
-    confirm_password: "",})
-
+setForm(clear=>clear.length=0)
 }
 
   const [error, setError] =useState({});
@@ -117,7 +110,8 @@ function Singup(props) {
         .then(function (response) {
           console.log(response.data.message);
           toast(response.data.message);
-          window.location.reload();
+          props.setShow(true);
+          console.log(response);
           clearForm();
         })
         .catch(function (error) {
@@ -249,7 +243,7 @@ function Singup(props) {
           </div>
         </div>
         <div>
-          <button class="sign_btn" style={{ width: "100%" }} type="submit">
+          <button class="sign_btn btn" style={{ width: "100%" }} type="submit">
             Signin
           </button>
         </div>

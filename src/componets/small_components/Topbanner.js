@@ -14,10 +14,12 @@ let Banner = () => {
           </div>
         </div>
         <div className="text_area">
+        <div className="homeText" >
           <h1>adventure is worthwhile</h1>
           <p>
             “The journey of a thousand miles begins with a single step.” ...
           </p>
+          </div>
         </div>
       </div>
     </div>

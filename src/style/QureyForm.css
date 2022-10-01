@@ -14,9 +14,12 @@
   flex-direction: column;
   padding: 1rem;
 }
+.enqueryCont{
+  width: 90%;
+}
 
 .SubmitQuery {
-  width: 35%;
+  width: 4rem;
   text-align: center;
   color: #fff ;
   background-color:#659DBD;
@@ -33,8 +36,14 @@
  }
 
 .formInput {
+  width: 80%;
   background-color: #fff;
   margin: 0.5rem;
   padding: 1rem;
   border-radius: 10px;
+}
+
+
+@media (max-width: 950px){
+
 }

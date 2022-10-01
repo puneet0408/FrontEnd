@@ -1,113 +1,11 @@
-/* .card
-{
-    flex: 1 1 10rem;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-    padding:2rem;
-}
-.card__text{
-    padding: 10px 1px px 0px;
-}
-.card:hover
-{
-    box-shadow: 5px 10px 18px black;
-    transition: all 0.5s ease-in-out;
-}
-.card img
-{
-    height: 25rem;
-    width: 100%;
-    object-fit: cover;
-}
-.card__text button
-{
-    width: 50%;
-    height: 45px;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-.card__text button:hover
-{
-    opacity: 0.7;
-    background-color: white;
-    color: black;
-    transition: all 0.5s ease-in-out;
-}
-.buyButton
-{
-    background-color: orange;
-}
-.addtoCart
-{
-    background-color: rgb(28, 197, 189);
-}
-.main_destination
-{
-    font-size: 12px;
-    font-weight: 400;
-}
-.price
-{
-    font-weight: 400;
-    font-size: 25px;
-    padding: 10px;
-}
-.name
-{
-    padding: 10px;
-}
-.member-count
-{
-    display: flex;
-    align-items: flex-end;  
-    height: 2.5rem;
-    
-}
-.member-count p
-{
-    width: 60%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(94, 167, 235);
-}
-.member-count button
-{
-    width: 20%;
-    height: 100% !important;
-    background-color: rgb(221, 207, 12);
-    font-size: 35px;
-    font-weight: 500;
-}
-.imgContainer
-{
-    position: relative;
-}
-.description
-{
-    height: 200px;
-    width: 275px;
-    position: absolute;
-    background-color: rgba(0, 0, 0,0.6);
-    color: white;
-    top: 0px;
-    display: none;
-}
-.imgContainer:hover  .description{ 
-    display: block;
-}
-@media only screen and (max-width: 632px)
-{
-    .card
-    {
-        width: 90%;
-    }
-} */
+ 
 .packagecard{
     padding: 1rem;
     display: flex;
+    width: 20rem;
+    flex-wrap: nowrap;
     position: relative;
+    margin-top: 1rem;
     overflow: hidden;
     background-color: transparent;
     z-index: 5;
@@ -116,6 +14,7 @@
     border-radius: 1.5rem;
     box-shadow: inset 0 -3em 3em rgba(16, 9, 9, 0.1), 0 0 0 2px rgb(208, 198, 198),
     0.3em 0.3em 1em rgba(248, 248, 248, 0.3);
+    cursor: pointer;
 }
 .packagecard::before{
     width: 80rem;
@@ -167,45 +66,37 @@
 
 .cardName{
 font-size: 1.2rem;
+text-transform: none;
 }
  
-
+ 
 .cardisc,.packagePrice{
     font: 1rem sans-serif;
     text-transform: capitalize;
     margin-top: .2rem;
 }
  
- 
 
- 
- 
-.buypackage , .addtoCartpackage{
-    margin:.5rem 0 ;
-    width: 100%;
-padding: .5rem;
-border-radius: .5rem;
-background-color: rgb(220, 155, 25);
-cursor: pointer;
+.name_div{
+    display: flex;
+    flex-direction: row;
+     align-items: center;
 }
 
-.buypackage:hover{
-    background: rgba(225, 165, 0, 0.2);
-    color:  rgb(220, 155, 25);
+.starIcon{
+font-size: 1.2rem;
+color: rgb(230, 131, 10);
+}
+ 
+ 
+@media (max-width: 425px){
+    .packagecard{
+        width: 15rem;
+    }
 }
 
- .addtoCartpackage:hover{
-    background: rgba(225, 165, 0, 0.2);
-    color:  rgb(220, 155, 25);
-  }
-
- 
-.readMoreBtn{
-    padding: .7rem;
-    margin-top:.3rem;
-    width: 100%;
-    color: #fff;
-    cursor: pointer;
-    font-weight: 800;
-   background: linear-gradient(#e66465, #9198e5);;
+@media (max-width: 305px){
+    .packagecard{
+        width: 10rem;
+    }
 }

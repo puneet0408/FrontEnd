@@ -1,6 +1,7 @@
-/* .home-container{
+.home-container{
     width: 100%;
-} */
+    overflow-x: hidden;
+}
 .package-top
 {
     background-color :#000;
