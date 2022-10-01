@@ -1,6 +1,1 @@
-function singUpApi(formdata)
-{
-    console.log("hloe");
-    console.log(formdata);
-}
-export {singUpApi}
+export const baseUrl='https://touristbackend.herokuapp.com/api';

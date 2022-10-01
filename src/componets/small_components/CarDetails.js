@@ -19,6 +19,7 @@ import img8 from "../../static/images/gallary/8.jpg";
 import img9 from "../../static/images/5.jpg";
 import img10 from "../../static/images/4.jpg";
 import { useLocation } from "react-router-dom";
+<<<<<<< HEAD
 import {
   faStar,
   faArrowUp,
@@ -217,6 +218,12 @@ function CarDetails() {
           </button>
         </p>
       </div>
+=======
+
+function CarDetails(props) {
+  return (
+    <div>
+>>>>>>> 73115c11a33080d1f2bf0f9cb0508ecda8042768
     </div>
   );
 }

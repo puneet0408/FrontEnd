@@ -1,5 +1,5 @@
 # Deployment Link
-[Click to Visit](https://632ecce7fbe18d55c48fa6af--relaxed-alfajores-1445cf.netlify.app)
+[Click to Visit](https://relaxed-alfajores-1445cf.netlify.app)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

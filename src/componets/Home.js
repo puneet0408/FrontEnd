@@ -15,12 +15,12 @@ function temp(product) {
     <Card {...product} />
   );
 }
- 
 let Home = () => {
 
   const [loading, setloading] =useState(true);
   // const { cart, setCart } = useContext(apiContext);
   let [products,setProucts]=useState([]);
+  console.log(process.env.NODE_ENV);
   useEffect(() => {
     //Fectching Products Data from Backend
     var config = {

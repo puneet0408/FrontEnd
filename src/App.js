@@ -4,12 +4,12 @@ import Navbar from './componets/Navbar';
 import Home from './componets/Home';
 import  About from './componets/About';
 import Profile from "./componets/profile";
-//import Singin from './componets/Singin'
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Authentication from './componets/Authentication';
 import CarDetails from './componets/small_components/CarDetails';
 import Contact from './componets/Contact';
 import ResetForm from "./componets/resetForm";
+
 function App() {
   //let [login,SetLogin] = useState(false);
   return (

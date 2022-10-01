@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Route} from "react-router-dom";
+import axios from "axios"
 import BackCardImg from "../../static/images/gallary/3.jpg"
 
 import "./Card.css";
