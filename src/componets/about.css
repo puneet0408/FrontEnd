@@ -37,8 +37,7 @@ overflow-x: hidden;
   box-shadow: inset 0 -3em 3em rgba(16, 9, 9, 0.1), 0 0 0 2px rgb(208, 198, 198),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3), 0.3em 0.3em 1em rgb(208, 198, 198),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-    background-image: linear-gradient( rgba(241, 237, 237, 0), rgb(244, 236, 236),rgb(244, 236, 236));
-
+    background: linear-gradient( rgba(241, 237, 237, 0), rgb(244, 236, 236),rgb(244, 236, 236));
   text-transform: capitalize;
   margin-top: 2rem;
   font-size: larger;
@@ -51,6 +50,11 @@ overflow-x: hidden;
  
 .btn_ContainerAb{
   margin-top: 2.9rem;
+}
+
+.aboutBtn{
+  text-align: center;
+padding: 1rem;
 }
 
 .aboutBtn:hover{

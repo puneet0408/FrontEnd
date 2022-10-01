@@ -1,9 +1,13 @@
 import React from "react";
+
 import { useState, useContext } from "react";
-import { useNavigate, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import moment from "moment";
+import "react-datepicker/dist/react-datepicker.css";
 import "animate.css";
 import { apiContext } from "../../ContextApi/ContextProvider";
-import Calendar from "react-calendar";
+
 import "react-calendar/dist/Calendar.css";
 import "../../style/CardDetails.css";
 import img1 from "../../static/images/gallary/1.jpg";
@@ -28,23 +32,42 @@ function CarDetails() {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  const [value, onChange] = useState(new Date());
   let [memberCount, setMemberCount] = useState(1);
-  const [calender, setCalender] = useState(false);
-  const [guest, setguest] = useState(false);
+  
+
   const [readMore, setreadMore] = useState(true);
-  let { logedin, setLogedin } = useContext(apiContext);
+  let { logedin } = useContext(apiContext);
+  const [selectDate, setSelectDate] = useState(null);
+  const [makePay, setMakePayment] = useState(false);
+  const [guest, setguest] = useState(false);
+  const [calender, setCalender] = useState(false);
+
+
+ 
+
+
 
   const goToSignUpPage = () => {
     navigate("/singin");
   };
 
+  const makePayment = () => {
+    setMakePayment((prev) => !prev);
+    setCalender(false)
+    setguest(false)
+  };
+
   const reverseCalender = () => {
     setCalender((prev) => !prev);
+    setMakePayment(false)
+    setguest(false)
   };
 
   const reverseguest = () => {
     setguest((prev) => !prev);
+    setCalender(false);
+    setMakePayment(false)
+
   };
 
   const add = () => {
@@ -111,12 +134,14 @@ function CarDetails() {
               from {state.props.price} <span className="person">/person</span>
             </p>
             <div className="capsule">
-              <div onClick={reverseCalender} className="date_container">
+              {/* <div  onClick={reverseCalender} className="date_container">
                 {" "}
                 <h2>Dates</h2>
                 <div className="date">
-                  <p className="add_date">Add dates</p>
-                  <p>
+                  <p   className="add_date">
+                    DD-MM-YYYY
+                  </p>
+                  <p  >
                     {" "}
                     {calender ? (
                       <FontAwesomeIcon
@@ -129,26 +154,41 @@ function CarDetails() {
                   </p>
                   {calender ? (
                     <div className="calender_container">
-                      <Calendar onChange={onChange} value={value} />
+                      <DatePicker
+                        selected={selectDate}
+                        onChange={(date) => setSelectDate(date)}
+                        dateFormat="dd/MM/yyyy"
+                        minDate={new Date()}
+                        isClearable
+                        shoewYearDropDown
+                        scrollableMonthYearDropdowm
+                      />
+                      <button onClick={reverseCalender} className="btn">
+                        Save
+                      </button>
                     </div>
                   ) : (
                     " "
                   )}
                 </div>
-              </div>
-              <div onClick={reverseguest} className="guest_Container">
-                <h2>guests</h2>
+              </div> */}
+
+              <div  className="guest_Container">
+                <h2 onClick={reverseguest} >guests</h2>
                 <div className="date">
-                  <p className="add_date">Add guests</p>
+                  <p  onClick={reverseguest} className="add_date" >
+                    {memberCount} guest Added
+                  </p>
                   <p>
                     {" "}
                     {guest ? (
-                      <FontAwesomeIcon
+                      <FontAwesomeIcon 
+                       onClick={reverseguest}
                         className="starIcon"
                         icon={faArrowDown}
                       />
                     ) : (
-                      <FontAwesomeIcon className="starIcon" icon={faArrowUp} />
+                      <FontAwesomeIcon className="starIcon"  onClick={reverseguest} icon={faArrowUp} />
                     )}{" "}
                   </p>
                   {guest ? (
@@ -168,7 +208,7 @@ function CarDetails() {
                             </button>
                             <p className="memberNO"> {memberCount}</p>
                             <button
-                              className="add sign "
+                              className="add sign"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 add();
@@ -178,7 +218,9 @@ function CarDetails() {
                             </button>
                           </div>
                         </div>
-                        <button className="btn">save member</button>
+                        <button className="btn" onClick={reverseguest}>
+                          save member
+                        </button>
                       </div>
                     </div>
                   ) : (
@@ -187,19 +229,40 @@ function CarDetails() {
                 </div>
               </div>
             </div>
-            <div className="currentDate">
-              <span>current Date</span>
-              {new Date().toLocaleString() + ""}
+            {/* <div className="inline">
+              <span className="selectDA">selected Date</span>
+              <span>
+                {selectDate
+                  ? moment(selectDate).format("DD-MM-YYYY")
+                  : "DD-MM-YYYY"}
+              </span>
+            </div> */}
+            <div className="inline">
+              <span className="selectDA">total Amount -</span>
+              <span>{state.props.price * memberCount} Rs</span>
+            </div>
+            <div>
+              {makePay ? (
+                <div className="makePayment_container">
+                  <h1 className="makepayment">Make payment</h1>
+                  <button className="btn" onClick={makePayment}>
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                " "
+              )}
             </div>
             <button
               className="btn_card"
-              onClick={logedin ? console.log("buy_package") : goToSignUpPage}
+              onClick={logedin ? makePayment : goToSignUpPage}
             >
               book Now
             </button>
           </div>
         </div>
       </div>
+
       <div className="aboutState">
         <h3>about {state.props.package_name} </h3>
         <p>

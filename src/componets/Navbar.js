@@ -1,11 +1,31 @@
+import { svg } from "leaflet";
 import { useState, useContext, useEffect } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import { apiContext } from "../ContextApi/ContextProvider";
 import "./Navbar.css";
 
 const Navbar = () => {
   let [hide, setHide] = useState(true);
   let { logedin, setLogedin } = useContext(apiContext);
+
+  const changeSideBar = () => {
+    if (window.scrollY >= 100) {
+      setHide(true);
+    }
+  };
+  window.addEventListener("scroll", changeSideBar);
+
+  useEffect(()=>{
+  
+ const closeNav = e=>{
+   if(e.path[0].tagName !== 'svg'){
+  setHide(true);
+   }
+ }
+ document.body.addEventListener('click',closeNav);
+ return()=> document.body.removeEventListener('click',closeNav);
+  },[]);
+
   useEffect(() => {
     setLogedin(localStorage.getItem("user"));
   }, []);
@@ -13,6 +33,7 @@ const Navbar = () => {
   }, []);
   let toggleNav = () => {
     setHide(!hide);
+    
   };
   let logout = () => {
     setLogedin(false);
@@ -25,7 +46,7 @@ const Navbar = () => {
           <h3>Tourister</h3>
         </div>
         <button
-          className={hide ? "menu" : "menu opened"}
+          className={hide  ? "menu" : "menu opened"}
           onClick={toggleNav}
           aria-label="Main Menu"
         >
@@ -44,26 +65,27 @@ const Navbar = () => {
         
         <ul className="navigations-links desktop-nav">
           <li>
-            <Link to="/"> Home </Link>
+            <NavLink to="/"> Home </NavLink>
           </li>
           <li>
-            <Link to="/about"> About Us </Link>
+            <NavLink to="/about"> About Us </NavLink>
           </li>
           <li>
-            <Link to="/singin" onClick={logout}>
+            <NavLink to="/singin" onClick={logout}>
               {logedin ? "Logout" : "Sign in"}{" "}
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/contact"> Contact Us </Link>
+            <NavLink to="/contact"> Contact Us </NavLink>
           </li>
           <li>
-            <Link to="/profile">profile</Link>
+            <NavLink to="/profile">profile</NavLink>
           </li>
         </ul>
       </div>
       {/*Mobile Window Navbar */}
-      <div
+      <div  
+       
         className={
           hide
             ? "mobile-nav navigations-links"
@@ -72,26 +94,25 @@ const Navbar = () => {
       >
         <ul>
           <li>
-            <Link to="/"> Home </Link>
+            <NavLink to="/"> Home </NavLink>
           </li>
           <li>
-            <Link to="/about"> About Us </Link>
+            <NavLink to="/about"> About</NavLink>
           </li>
           <li>
-            <Link to="/singin"> Sing In </Link>
+            <NavLink to="/singin" onClick={logout}>
+              {logedin ? "Logout" : "Sign in"}{" "}
+            </NavLink>
           </li>
           <li>
-            <Link to="/singup"> Sing Up </Link>
+            <NavLink to="/contact">contact</NavLink>
           </li>
           <li>
-            <Link to="/contact">contact</Link>
-          </li>
-          <li>
-            <Link to="/user">user</Link>
+            <NavLink to="/profile">profile</NavLink>
           </li>
         </ul>
       </div>
-      <Outlet />
+      <Outlet  />
     </>
   );
 };

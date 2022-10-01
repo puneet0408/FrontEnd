@@ -33,6 +33,11 @@
   background-color: #fff;
 }
 
+.IPWithError{
+  display: flex;
+  flex-direction: column;
+}
+
 .activeSign{
     background-color: #fff !important;
     color: #000 !important;

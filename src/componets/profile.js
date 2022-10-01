@@ -1,13 +1,33 @@
 import React from "react";
 import "./profile.css";
 import { useState, useContext, useEffect } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { apiContext } from "../ContextApi/ContextProvider";
-import Pic from "../static/images/pic-3.png"
+import Pic1 from "../static/images/pic-1.png";
+import Pic2 from "../static/images/pic-2.png";
+import Pic3 from "../static/images/pic-3.png";
+import Pic4 from "../static/images/pic-4.png";
+
 
 function Profile() {
+
+  const data = [
+    {
+      img:Pic1,
+      mobileNo:7202345672,
+      email:'mohan@gmail.com',
+      address:'delhi',
+      myOrder:{
+         packageName:"kullu",
+         member:4,
+         amount:15000,
+      },
+    }
+  ]
+
   const navigate = useNavigate();
-  let { logedin} = useContext(apiContext);
+  let { logedin } = useContext(apiContext);
+  
 
   const goToSignUpPage = () => {
     navigate("/singin");
@@ -16,7 +36,7 @@ function Profile() {
   const [items, setItems] = useState();
 
   useEffect(() => {
-    const items =(localStorage.getItem('name'));
+    const items = localStorage.getItem("name");
     if (items) {
       setItems(items);
     }
@@ -24,23 +44,44 @@ function Profile() {
 
   console.log(items);
 
+  const user = data.map((users)=>{
+return(
+  <div className="about">
+  <img className="myImage" src={users.img} alt="can't display" />
+  <div className="container_prof" > 
+  <h1 className="persional_head common_head" >persional detail's</h1>
+  <h2 className="name_profile persional">{items}</h2>
+  <h3 className="email persional" >{users.email}</h3>
+  <h3 className="mobileNo persional" >{users.mobileNo}</h3>
+  <h3 className="address persional" >{users.address}</h3>
+  </div>
+  <div  className="container_prof" >
+  <h1 className="order_head common_head">order Detail's</h1>
+  <h3  className="number" >{users.myOrder.packageName}</h3>
+  <h3 className="number" >{users.myOrder.member} member</h3>
+  <h3 className="number" >{users.myOrder.amount} Rs</h3>
+  </div>
+</div>
+)
+  })
+
   return (
     <div>
       {logedin ? (
-       
-      <div className="profile">
-        <div className="about">
-          <img className="myImage" src={Pic} alt="can't display" />
-          <h1 className="name">{items}</h1>
+        <div className="profile">
+      {user}
         </div>
-
-      </div>
-    
       ) : (
-        <div>
+        <div className="beforeLoginCont" >
+        <div className="lofinBtnContainer" >
           <div className="profileLogin btn" onClick={goToSignUpPage}>
             login First{" "}
+          
           </div>
+
+         <p className="Join_us" >Join us to explore more </p> 
+          </div>
+          
         </div>
       )}
     </div>

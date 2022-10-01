@@ -21,9 +21,9 @@
     1px 7px 1px #0b0b0b, 1px 8px 1px #181817, 1px 9px 1px #0f0f0e,
     1px 10px 1px #0c0c0c, 1px 18px 6px rgba(19, 10, 10, 0.4),
     1px 22px 10px rgba(16, 10, 10, 0.4), 1px 30px 60px rgba(18, 13, 13, 0.4);
-
 }
 .navigations-links {
+
   list-style-type: none;
   margin-right: 10px;
   padding: 0;
@@ -34,7 +34,6 @@
 }
 .mobile-nav ul li {
   list-style: none;
-  padding-top: 25px;
 }
 .navigations-links li:hover {
   color: white;
@@ -81,27 +80,37 @@ input.effect-1 {
 }
 /*Navigation Bar of Mobile Phones*/
 .mobile-nav {
-  background-color: rgba(0, 0, 0, 0.5);
+  margin: 0;
+  background-color:rgba(16, 10, 10, 0.8);
   position: absolute;
+  right: 0;
   color: white;
   display: none;
-  width: 100%;
-  height: 100vh;
-  z-index: 2;
+  width: 50%;
+  height: 93%;
+  z-index: 11;
 }
 .mobile-nav ul {
   text-align: center;
-  margin: 0px;
+  margin: 0;
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0px;
+  
 }
+
+.mobile-nav li{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 1rem;
+}
+
 
 .show {
   display: block;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 680px) {
   .hide {
     display: none;
   }
@@ -115,12 +124,11 @@ input.effect-1 {
 
 /* CSS Copied For Navbar Toggle Button*/
 .menu {
-  background-color: transparent;
   border: none;
   cursor: pointer;
   display: none;
   padding: 0;
-  margin-left: auto;
+  margin-right:.5rem;
 }
 .line {
   fill: none;

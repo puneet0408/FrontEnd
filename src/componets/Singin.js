@@ -1,24 +1,19 @@
 import React, { useEffect, useState, useContext, createContext } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import ForgetForm from "./forgetForm";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import "../style/Auth.css";
 import { apiContext } from "../ContextApi/ContextProvider";
 import { faAt, faKey } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-const Change = createContext();
-const submit = createContext();
-const loginForm = createContext();
-const Allerror = createContext();
-const ShowerrorMessage = createContext();
+ 
 
 function Singin() {
   
-  let { logedin, setLogedin } = useContext(apiContext);
+  let { setLogedin } = useContext(apiContext);
   const navigate = useNavigate();
   const [signinForm, setForm] = React.useState({
     email: "",
@@ -26,13 +21,18 @@ function Singin() {
     confirmPassword: "",
   });
 
+  const [submitBtn, StSubmitBtn] = React.useState({
+    btnText: "login",
+    disabled: false,
+  });
+
+  const { btnText, disabled } = submitBtn;
+
   const [error, setError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const [forgetPassword, setForgetPassword] = useState(false);
-
-
 
   const showForgetForm = () => {
     setForgetPassword((prev) => !prev);
@@ -46,13 +46,23 @@ function Singin() {
       ...prevInput,
       [name]: value,
     }));
+    setError(validate(signinForm));
+
+
   }
   function handleSubmit(event) {
     event.preventDefault();
-  
-    setError(validate(signinForm));
+      if (Object.keys(error).length === 0) {
+        setIsSubmit(true);
+        StSubmitBtn({ btnText: "submitting...", disabled: true });
+      }
+  }
 
-  
+ 
+
+  useEffect(() => {
+    if(isSubmit){
+      console.log("hlog dfd ");
       var config = {
         method: "post",
         url: "https://touristbackend.herokuapp.com/api/login",
@@ -61,43 +71,34 @@ function Singin() {
         },
         data: signinForm,
       };
-      if(signinForm.password.length>=3)
-      {
+      
         axios(config)
         .then(function (response) {
-          console.log(response.data.id);
+          console.log(response);
+       
           localStorage.setItem("id", response.data.id);
           localStorage.setItem("name", response.data.name);
-         if(response.data?.role == 0)
+          StSubmitBtn({ btnText: "login ", disabled: false });
+          navigate("/singin");
+         if(response.data?.role === 0)
          {
               localStorage.setItem('user',true)
          }
-         if(response.data?.role == 1)
+         if(response.data?.role === 1)
          {
               localStorage.setItem('admin',true)
          }
           setLogedin(true);
-          setIsSubmit(true);
           navigate("/");
         })
         .catch(function (error) {
           setErrorMessage(error.response.data.error);
+          StSubmitBtn({ btnText: "Login", disabled: false });
+          setIsSubmit(false);
         });
-      }else
-      {
-        setErrorMessage("Please provide a valid password");
-        return;
       }
-     
-  }
+  }, [isSubmit]);
 
-  console.log(errorMessage.message);
-
-  useEffect(() => {
-    if (Object.keys(error).length === 0 && isSubmit) {
-      // toast("signin sucessfully");
-    }
-  }, [error]);
   const validate = (values) => {
     const error = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -108,6 +109,9 @@ function Singin() {
     } else if (!values.password) {
       error.password = "password is required";
     }
+    else if(!(values.password)){
+         error.password = "password is required"
+    }
     return error;
   };
 
@@ -115,21 +119,9 @@ function Singin() {
 
   return (
     <div className="signin">
-      {forgetPassword ? (
-        <submit.Provider value={handleSubmit} >
-          <loginForm.Provider value={signinForm} >
-            <Allerror.Provider value={error} >
-              <ShowerrorMessage.Provider value={errorMessage}>
-                <Change.Provider>
-                  <ForgetForm />
-                </Change.Provider>
-              </ShowerrorMessage.Provider>
-            </Allerror.Provider>
-          </loginForm.Provider>
-        </submit.Provider>
-      ) : (
+      {forgetPassword ?   <ForgetForm /> : 
         <form onSubmit={handleSubmit} style={{ width: "100%" }}>
-          <div class="">
+          <div class="IPWithError">
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend3">
                 <FontAwesomeIcon icon={faAt}></FontAwesomeIcon>
@@ -142,10 +134,10 @@ function Singin() {
                 type="email"
                 class="form-control"
               />
-              <p className="error">{error.email}</p>
             </div>
+            <p className="error">{error.email}</p>
           </div>
-          <div>
+          <div className="IPWithError" >
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend3">
                 <FontAwesomeIcon icon={faKey}></FontAwesomeIcon>
@@ -158,9 +150,9 @@ function Singin() {
                 value={signinForm.password}
                 class="form-control"
               />
-              <p className="error">{error.password}</p>
-              <p className="error">{errorMessage}</p>
             </div>
+            <p className="error">{error.password}</p>
+              <p className="error">{errorMessage}</p>
           </div>
           <div class="col-md-8 check">
             <div>
@@ -169,18 +161,17 @@ function Singin() {
               </p>{" "}
             </div>
           </div>
-
-          <div class="mt-2 ">
             <button
               class="sign_btn btn"
               style={{ width: "100%" }}
               type="submit"
+              disabled={disabled}
             >
-              login
+               {btnText}
             </button>
-          </div>
+          
         </form>
-      )}
+      }
 
       <ToastContainer />
     </div>
@@ -188,4 +179,4 @@ function Singin() {
 }
 
 export default Singin;
-export  {loginForm , submit , Change,ShowerrorMessage,Allerror};
+ 
