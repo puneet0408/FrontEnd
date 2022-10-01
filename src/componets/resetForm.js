@@ -1,5 +1,6 @@
 import React, { useState,useEffect} from "react";
 import { faKey } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../style/Auth.css";
  
@@ -7,6 +8,11 @@ import "../style/Auth.css";
 
 const ResetPassword = () => {
   
+  const navigate = useNavigate();
+
+  const goToLoginPage = () => {
+    navigate(`/singin`);
+  };
 
   const [error, setError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -95,7 +101,7 @@ const ResetPassword = () => {
             <div></div>
           </div>
           <button
-         
+         onClick={goToLoginPage}
             class="sign_btn btn resetBtn"
             style={{ width: "100%" }}
             type="submit"

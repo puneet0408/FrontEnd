@@ -79,7 +79,7 @@ const Navbar = () => {
         
         <ul className="navigations-links desktop-nav">
           <li>
-            <NavLink to="/"> Home </NavLink>
+            <NavLink  to="/"> Home </NavLink>
           </li>
           <li>
             <NavLink to="/about"> About Us </NavLink>
@@ -109,21 +109,21 @@ const Navbar = () => {
       >
         <ul>
           <li>
-            <NavLink to="/"> Home </NavLink>
+            <NavLink className="navLink"  to="/"> Home </NavLink>
           </li>
           <li>
-            <NavLink to="/about"> About</NavLink>
+            <NavLink className="navLink"  to="/about"> About</NavLink>
           </li>
           <li>
-            <NavLink to="/singin" onClick={logout}>
+            <NavLink className="navLink"  to="/singin" onClick={logout}>
               {logedin ? "Logout" : "Sign in"}{" "}
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact">contact</NavLink>
+            <NavLink   className="navLink"  to="/contact">contact</NavLink>
           </li>
           <li>
-            <NavLink to="/profile">profile</NavLink>
+            <NavLink className="navLink"  to="/profile">profile</NavLink>
           </li>
         </ul>
       </div>
