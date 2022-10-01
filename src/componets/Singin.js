@@ -9,7 +9,8 @@ import { apiContext } from "../ContextApi/ContextProvider";
 import { faAt, faKey } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
- 
+const data = createContext();
+const data1 = createContext();
 
 function Singin() {
   
@@ -119,7 +120,14 @@ function Singin() {
 
   return (
     <div className="signin">
-      {forgetPassword ?   <ForgetForm /> : 
+      {forgetPassword ?  
+        <data.Provider value={forgetPassword}>
+        <data1.Provider value={setForgetPassword}>
+          <ForgetForm/>
+          
+        </data1.Provider>
+      </data.Provider>
+       : 
         <form onSubmit={handleSubmit} style={{ width: "100%" }}>
           <div class="IPWithError">
             <div class="input-group has-validation">
@@ -179,4 +187,5 @@ function Singin() {
 }
 
 export default Singin;
+export {data , data1};
  

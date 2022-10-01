@@ -110,6 +110,8 @@ input.effect-1 {
 .show {
   display: block;
 }
+
+ 
 @media only screen and (max-width: 680px) {
   .hide {
     display: none;
@@ -128,7 +130,7 @@ input.effect-1 {
   cursor: pointer;
   display: none;
   padding: 0;
-  margin-right:.5rem;
+  margin-left: auto;
 }
 .line {
   fill: none;
@@ -164,3 +166,4 @@ input.effect-1 {
   stroke-dashoffset: -134;
   stroke-width: 6;
 }
+

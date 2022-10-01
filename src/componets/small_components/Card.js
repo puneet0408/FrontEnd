@@ -7,8 +7,11 @@ import {
   faStar
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 let Card = (props) => {
+
   const navigate = useNavigate();
+  
   const handlePage = () => {
     navigate(`/cardetails`, { state: { props } });
   };

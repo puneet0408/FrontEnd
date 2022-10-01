@@ -90,3 +90,11 @@ text-transform: capitalize;
     1px 4px 1px #c6c6bc, 1px 5px 1px rgb(218, 218, 208) ,  
     1px 22px 10px rgba(235, 223, 223, 0.4);
 }
+.orderdetails{
+ margin: 2rem;
+ padding: 1rem;
+ background-color: black;
+ color: rgb(12, 135, 235);
+ font-weight: 600;
+ font-size: 1.5rem;
+}

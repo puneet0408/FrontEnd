@@ -8,15 +8,29 @@ const Navbar = () => {
   let [hide, setHide] = useState(true);
   let { logedin, setLogedin } = useContext(apiContext);
 
+ 
+  if(window.size>680){
+    setHide(true)
+  }
+
   const changeSideBar = () => {
     if (window.scrollY >= 100) {
       setHide(true);
     }
+  
   };
   window.addEventListener("scroll", changeSideBar);
 
+ 
+    const closeNav = e=>{
+      if(window.onresize>= 680){
+     setHide(true);
+      }
+    }
+ 
+ 
+
   useEffect(()=>{
-  
  const closeNav = e=>{
    if(e.path[0].tagName !== 'svg'){
   setHide(true);
@@ -84,12 +98,13 @@ const Navbar = () => {
         </ul>
       </div>
       {/*Mobile Window Navbar */}
+      
+
       <div  
-       
         className={
           hide
             ? "mobile-nav navigations-links"
-            : "mobile-nav navigations-links show"
+            : "mobile-nav navigations-links show  "
         }
       >
         <ul>
@@ -112,6 +127,7 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
+       
       <Outlet  />
     </>
   );

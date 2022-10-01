@@ -1,11 +1,12 @@
-import React, { useState,useEffect } from "react";
-import LoginForm from "./Singin";
+import React, { useState,useEffect} from "react";
 import { faKey } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../style/Auth.css";
  
+ 
 
 const ResetPassword = () => {
+  
 
   const [error, setError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -21,13 +22,13 @@ const ResetPassword = () => {
     setForm((prevInput) => ({
       ...prevInput,
       [name]: value,
-    }));
+    }))
+    setError(validate(signinForm));
   }
-
+   
   function handleSubmit(event) {
     event.preventDefault();
-
-    setError(validate(signinForm));
+  
   }
 
   useEffect(() => {
@@ -47,20 +48,15 @@ const ResetPassword = () => {
     }  
     return error;
   };
-
-  const [backtoLogin, setbacktoLogin] = useState(false);
-
-  const againLoginForm = () => {
-    if(isSubmit ){
-    setbacktoLogin((prev) => !prev);
-    }
-  };
-
+  
+ 
+ 
+ 
   return (
-    <div>
-      {backtoLogin ? (
-        <LoginForm />
-      ) : (
+    <div className="resetform" >
+    <div className=" formCont" >
+    <h1 style={{color:"#000"}} > Reset Password </h1>
+    <div className=" box" >
         <form onSubmit={handleSubmit} style={{ width: "100%" }}>
           <div className="IPWithError">
             <div class="input-group has-validation">
@@ -99,7 +95,7 @@ const ResetPassword = () => {
             <div></div>
           </div>
           <button
-            onClick={againLoginForm}
+         
             class="sign_btn btn resetBtn"
             style={{ width: "100%" }}
             type="submit"
@@ -107,7 +103,8 @@ const ResetPassword = () => {
             Reset Password
           </button>
         </form>
-      )}
+        </div>
+    </div>
     </div>
   );
 };

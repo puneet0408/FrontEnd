@@ -4,12 +4,18 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiContext } from "../ContextApi/ContextProvider";
 import Pic1 from "../static/images/pic-1.png";
-import Pic2 from "../static/images/pic-2.png";
-import Pic3 from "../static/images/pic-3.png";
-import Pic4 from "../static/images/pic-4.png";
+
 
 
 function Profile() {
+
+  const [vieworder , setOrder] = useState(false)
+
+  const openOrderBox = ()=>{
+        return(
+          setOrder((prev)=>!prev)
+        )
+  }
 
   const data = [
     {
@@ -46,7 +52,16 @@ function Profile() {
 
   const user = data.map((users)=>{
 return(
+
   <div className="about">
+  {vieworder? <div  className="container_prof" >
+<h1 className="order_head common_head">order Detail's</h1>
+<h3  className="number" >{users.myOrder.packageName}</h3>
+<h3 className="number" >{users.myOrder.member} member</h3>
+<h3 className="number" >{users.myOrder.amount} Rs</h3>
+<button className="orderdetails" onClick={openOrderBox} >back to profile</button>
+</div> :
+<div>
   <img className="myImage" src={users.img} alt="can't display" />
   <div className="container_prof" > 
   <h1 className="persional_head common_head" >persional detail's</h1>
@@ -55,12 +70,9 @@ return(
   <h3 className="mobileNo persional" >{users.mobileNo}</h3>
   <h3 className="address persional" >{users.address}</h3>
   </div>
-  <div  className="container_prof" >
-  <h1 className="order_head common_head">order Detail's</h1>
-  <h3  className="number" >{users.myOrder.packageName}</h3>
-  <h3 className="number" >{users.myOrder.member} member</h3>
-  <h3 className="number" >{users.myOrder.amount} Rs</h3>
-  </div>
+ <button className="orderdetails" onClick={openOrderBox} >view orders</button>
+ </div>
+  }
 </div>
 )
   })
@@ -89,3 +101,4 @@ return(
 }
 
 export default Profile;
+{/* */}

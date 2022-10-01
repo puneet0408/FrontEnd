@@ -2,13 +2,11 @@ import React from "react";
 
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import DatePicker from "react-datepicker";
-import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import "animate.css";
 import { apiContext } from "../../ContextApi/ContextProvider";
 
-import "react-calendar/dist/Calendar.css";
+//import "react-calendar/dist/Calendar.css";
 import "../../style/CardDetails.css";
 import img1 from "../../static/images/gallary/1.jpg";
 import img2 from "../../static/images/gallary/2.jpg";
@@ -29,45 +27,37 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function CarDetails() {
-  const navigate = useNavigate();
-  const { state } = useLocation();
+ 
+
 
   let [memberCount, setMemberCount] = useState(1);
   
 
   const [readMore, setreadMore] = useState(true);
   let { logedin } = useContext(apiContext);
-  const [selectDate, setSelectDate] = useState(null);
   const [makePay, setMakePayment] = useState(false);
   const [guest, setguest] = useState(false);
-  const [calender, setCalender] = useState(false);
+ 
 
 
  
 
 
-
+  const navigate = useNavigate();
+  const { state } = useLocation();
   const goToSignUpPage = () => {
     navigate("/singin");
   };
 
   const makePayment = () => {
     setMakePayment((prev) => !prev);
-    setCalender(false)
     setguest(false)
   };
 
-  const reverseCalender = () => {
-    setCalender((prev) => !prev);
-    setMakePayment(false)
-    setguest(false)
-  };
 
   const reverseguest = () => {
     setguest((prev) => !prev);
-    setCalender(false);
     setMakePayment(false)
-
   };
 
   const add = () => {
@@ -134,45 +124,6 @@ function CarDetails() {
               from {state.props.price} <span className="person">/person</span>
             </p>
             <div className="capsule">
-              {/* <div  onClick={reverseCalender} className="date_container">
-                {" "}
-                <h2>Dates</h2>
-                <div className="date">
-                  <p   className="add_date">
-                    DD-MM-YYYY
-                  </p>
-                  <p  >
-                    {" "}
-                    {calender ? (
-                      <FontAwesomeIcon
-                        className="starIcon"
-                        icon={faArrowDown}
-                      />
-                    ) : (
-                      <FontAwesomeIcon className="starIcon" icon={faArrowUp} />
-                    )}{" "}
-                  </p>
-                  {calender ? (
-                    <div className="calender_container">
-                      <DatePicker
-                        selected={selectDate}
-                        onChange={(date) => setSelectDate(date)}
-                        dateFormat="dd/MM/yyyy"
-                        minDate={new Date()}
-                        isClearable
-                        shoewYearDropDown
-                        scrollableMonthYearDropdowm
-                      />
-                      <button onClick={reverseCalender} className="btn">
-                        Save
-                      </button>
-                    </div>
-                  ) : (
-                    " "
-                  )}
-                </div>
-              </div> */}
-
               <div  className="guest_Container">
                 <h2 onClick={reverseguest} >guests</h2>
                 <div className="date">
@@ -229,14 +180,6 @@ function CarDetails() {
                 </div>
               </div>
             </div>
-            {/* <div className="inline">
-              <span className="selectDA">selected Date</span>
-              <span>
-                {selectDate
-                  ? moment(selectDate).format("DD-MM-YYYY")
-                  : "DD-MM-YYYY"}
-              </span>
-            </div> */}
             <div className="inline">
               <span className="selectDA">total Amount -</span>
               <span>{state.props.price * memberCount} Rs</span>
