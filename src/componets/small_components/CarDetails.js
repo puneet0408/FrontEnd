@@ -6,7 +6,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import "animate.css";
 import { apiContext } from "../../ContextApi/ContextProvider";
 
-//import "react-calendar/dist/Calendar.css";
 import "../../style/CardDetails.css";
 import img1 from "../../static/images/gallary/1.jpg";
 import img2 from "../../static/images/gallary/2.jpg";
@@ -27,22 +26,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function CarDetails() {
- 
-
-
   let [memberCount, setMemberCount] = useState(1);
-  
-
   const [readMore, setreadMore] = useState(true);
   let { logedin } = useContext(apiContext);
   const [makePay, setMakePayment] = useState(false);
   const [guest, setguest] = useState(false);
- 
-
-
- 
-
-
+  const [paymentprocessing, setPaymentProcessing] = useState(false);
   const navigate = useNavigate();
   const { state } = useLocation();
   const goToSignUpPage = () => {
@@ -51,13 +40,18 @@ function CarDetails() {
 
   const makePayment = () => {
     setMakePayment((prev) => !prev);
-    setguest(false)
+    setguest(false);
   };
 
+  const paymentProcess = () => {
+    setPaymentProcessing((prev) => !prev);
+    setMakePayment(false);
+    setguest(false);
+  };
 
   const reverseguest = () => {
     setguest((prev) => !prev);
-    setMakePayment(false)
+    setMakePayment(false);
   };
 
   const add = () => {
@@ -92,132 +86,152 @@ function CarDetails() {
   });
 
   return (
-    <div className="detailPage">
-      <h1 className="packageName">{state.props.package_name}</h1>
-      <div className="venu">
-        <FontAwesomeIcon className="starState" icon={faStar} />
-        <p>himachal INDIA</p>
-      </div>
-
-      <div className="detailPgImg">
-        <div className="containerHeading">
-          <h1>famous places in {state.props.package_name}</h1>
-        </div>
-        <div className="slider">
-          <div className="slider_track">{imgtoShow}</div>
-        </div>
-      </div>
-
-      <div className="famous_booking">
-        <div className="AllPlaces">
-          <h1 className="famousPLaces">famous places</h1>
-          <p className="places">{state.props.main_destinations[0]}</p>
-          <p className="places">{state.props.main_destinations[1]}</p>
-          <p className="places">{state.props.main_destinations[2]}</p>
-          <p className="places">{state.props.main_destinations[3]}</p>
-          <p className="places">{state.props.main_destinations[4]}</p>
-          <p className="places">{state.props.main_destinations[5]}</p>
-        </div>
-        <div className="booking_Side">
-          <div className="booking_box">
-            <p className="booking_price">
-              from {state.props.price} <span className="person">/person</span>
-            </p>
-            <div className="capsule">
-              <div  className="guest_Container">
-                <h2 onClick={reverseguest} >guests</h2>
-                <div className="date">
-                  <p  onClick={reverseguest} className="add_date" >
-                    {memberCount} guest Added
-                  </p>
-                  <p>
-                    {" "}
-                    {guest ? (
-                      <FontAwesomeIcon 
-                       onClick={reverseguest}
-                        className="starIcon"
-                        icon={faArrowDown}
-                      />
-                    ) : (
-                      <FontAwesomeIcon className="starIcon"  onClick={reverseguest} icon={faArrowUp} />
-                    )}{" "}
-                  </p>
-                  {guest ? (
-                    <div className="guestInfo">
-                      <div className="addMember">
-                        <div className="member_count">
-                          <p className="member">member</p>
-                          <div className="countNo">
-                            <button
-                              className="min sign"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                rem();
-                              }}
-                            >
-                              -
-                            </button>
-                            <p className="memberNO"> {memberCount}</p>
-                            <button
-                              className="add sign"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                add();
-                              }}
-                            >
-                              +
-                            </button>
-                          </div>
-                        </div>
-                        <button className="btn" onClick={reverseguest}>
-                          save member
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    " "
-                  )}
-                </div>
-              </div>
-            </div>
-            <div className="inline">
-              <span className="selectDA">total Amount -</span>
-              <span>{state.props.price * memberCount} Rs</span>
-            </div>
-            <div>
-              {makePay ? (
-                <div className="makePayment_container">
-                  <h1 className="makepayment">Make payment</h1>
-                  <button className="btn" onClick={makePayment}>
-                    Cancel
-                  </button>
-                </div>
-              ) : (
-                " "
-              )}
-            </div>
-            <button
-              className="btn_card"
-              onClick={logedin ? makePayment : goToSignUpPage}
-            >
-              book Now
-            </button>
+    <>
+      {paymentprocessing && (
+        <div onClick={paymentProcess} className="patment_cardModel">
+          <div className="makePaymentBody">
+            {" "}
+            <h1>Payment is in processing mode</h1>{" "}
+            <p>
+              Please do not close this window or click the Back button on your
+              browser{" "}
+            </p>{" "}
           </div>
         </div>
-      </div>
+      )}
+      <div className="detailPage">
+        <h1 className="packageName">{state.props.package_name}</h1>
+        <div className="venu">
+          <FontAwesomeIcon className="starState" icon={faStar} />
+          <p>himachal INDIA</p>
+        </div>
 
-      <div className="aboutState">
-        <h3>about {state.props.package_name} </h3>
-        <p>
-          {readMore
-            ? `${state.props.package_desription.substring(0, 200)}...`
-            : state.props.package_desription}
-          <button onClick={() => setreadMore(!readMore)}>
-            {readMore ? "readmore" : `show less`}
-          </button>
-        </p>
+        <div className="detailPgImg">
+          <div className="containerHeading">
+            <h1>famous places in {state.props.package_name}</h1>
+          </div>
+          <div className="slider">
+            <div className="slider_track">{imgtoShow}</div>
+          </div>
+        </div>
+
+        <div className="famous_booking">
+          <div className="AllPlaces">
+            <h1 className="famousPLaces">famous places</h1>
+            <p className="places">{state.props.main_destinations[0]}</p>
+            <p className="places">{state.props.main_destinations[1]}</p>
+            <p className="places">{state.props.main_destinations[2]}</p>
+            <p className="places">{state.props.main_destinations[3]}</p>
+            <p className="places">{state.props.main_destinations[4]}</p>
+            <p className="places">{state.props.main_destinations[5]}</p>
+          </div>
+          <div className="booking_Side">
+            <div className="booking_box">
+              <p className="booking_price">
+                from {state.props.price} <span className="person">/person</span>
+              </p>
+              <div className="capsule">
+                <div className="guest_Container">
+                  <h2 onClick={reverseguest}>guests</h2>
+                  <div className="date">
+                    <p onClick={reverseguest} className="add_date">
+                      {memberCount} guest Added
+                    </p>
+                    <p>
+                      {" "}
+                      {guest ? (
+                        <FontAwesomeIcon
+                          onClick={reverseguest}
+                          className="starIcon"
+                          icon={faArrowDown}
+                        />
+                      ) : (
+                        <FontAwesomeIcon
+                          className="starIcon"
+                          onClick={reverseguest}
+                          icon={faArrowUp}
+                        />
+                      )}{" "}
+                    </p>
+                    {guest ? (
+                      <div className="guestInfo">
+                        <div className="addMember">
+                          <div className="member_count">
+                            <p className="member">member</p>
+                            <div className="countNo">
+                              <button
+                                className="min sign"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  rem();
+                                }}
+                              >
+                                -
+                              </button>
+                              <p className="memberNO"> {memberCount}</p>
+                              <button
+                                className="add sign"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  add();
+                                }}
+                              >
+                                +
+                              </button>
+                            </div>
+                          </div>
+                          <button className="btn" onClick={reverseguest}>
+                            save member
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      " "
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="inline">
+                <span className="selectDA">total Amount -</span>
+                <span>{state.props.price * memberCount} Rs</span>
+              </div>
+              <div>
+                {makePay ? (
+                  <div className="makePayment_container">
+                    <h1 onClick={paymentProcess} className="makepayment">
+                      Make payment
+                    </h1>
+                    <button className="btn" onClick={makePayment}>
+                      Cancel
+                    </button>
+                  </div>
+                ) : (
+                  " "
+                )}
+              </div>
+              <button
+                className="btn_card"
+                onClick={logedin ? makePayment : goToSignUpPage}
+              >
+                book Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="aboutState">
+          <h3>about {state.props.package_name} </h3>
+          <p>
+            {readMore
+              ? `${state.props.package_desription.substring(0, 200)}...`
+              : state.props.package_desription}
+            <button onClick={() => setreadMore(!readMore)}>
+              {readMore ? "readmore" : `show less`}
+            </button>
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

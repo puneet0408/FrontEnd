@@ -1,0 +1,94 @@
+.advanture_section{
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.advHeading{
+   text-align: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: black;
+    color: #fff;
+}
+.allCard{
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:50px;
+ padding: 10px;
+
+}
+
+ 
+.main_Card{
+ 
+    padding: 1rem;
+    display: flex;
+    width: 30rem;
+    height: 15rem;
+    flex-wrap: nowrap;
+    position: relative;
+    margin-top: 1rem;
+    background-color: transparent;
+    flex-direction:row;
+    color: #000;
+    border-radius: 1.5rem;
+    box-shadow: inset 0 -3em 3em rgba(16, 9, 9, 0.1), 0 0 0 2px rgb(208, 198, 198),
+    0.3em 0.3em 1em rgba(248, 248, 248, 0.3);
+    cursor: pointer;
+    
+}
+
+.imgCont
+{ 
+    width: 100%;
+height: 100%;
+    object-fit: cover;
+}
+
+.textCont{
+    letter-spacing: 2px;
+    color: #fff;
+    font-size: large;
+    width: 60%;
+    padding: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.adv{
+    margin: 1rem;
+    font-size: x-large;
+}
+
+@media only screen and (max-width: 600px) {
+    .main_Card{
+ 
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 15rem;
+        height: 22rem;
+        flex-direction: column;
+    }
+    
+    .imgCont
+    { 
+        width: 100%;
+        object-fit: cover;
+    }
+    
+    .textCont{  
+        letter-spacing: 1px;
+        width: 100%;
+        padding: .5rem;
+    }  
+}

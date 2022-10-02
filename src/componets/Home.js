@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../componets/small_components/Card.js";
-import img1 from "../static/images/1.webp";
+ import Advanture from "./advantures.js";
 import Service from "./small_components/service.js";
 import "./home.css";
 import Loading from "./small_components/loading" 
@@ -10,9 +10,9 @@ import Gallary from "./small_components/gallary";
 
 
 
-function temp(product) {
+function temp(product,index) {
   return (
-    <Card {...product} />
+    <Card {...product} index={index}  />
   );
 }
 let Home = () => {
@@ -61,6 +61,9 @@ let Home = () => {
         <h3>Top Trending Packages</h3>
       </div>
       <div className="listed-packages">{products.map(temp)}</div>
+
+      {/* Advanture page */}
+      <Advanture/>
 
       {/* gallary page  */}
       <Gallary />

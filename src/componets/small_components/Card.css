@@ -18,8 +18,8 @@
 }
 .packagecard::before{
     width: 80rem;
-    height:80rem;
-    left: -20rem;
+    height:70rem;
+    left: -15rem;
     background-color: #f0f5fa;
     content: '';
     /* opacity: .8 ; */
@@ -33,8 +33,8 @@
   .packagecard::after{
     left: 0;
     width: 80rem;
-    height:80rem;
-    border-radius: 47%;
+    height:100rem;
+    border-radius: 40%;
     background-color: #50a4ca;
     content: '';
     z-index: -1;
@@ -70,10 +70,10 @@ text-transform: none;
 }
  
  
-.cardisc,.packagePrice{
-    font: 1rem sans-serif;
+.card_Desc,.packagePrice{
+    font: 1.2rem sans-serif;
     text-transform: capitalize;
-    margin-top: .2rem;
+    margin-top: .3rem;
 }
  
 
@@ -81,6 +81,7 @@ text-transform: none;
     display: flex;
     flex-direction: row;
      align-items: center;
+     margin: 1rem 0;
 }
 
 .starIcon{
@@ -88,6 +89,20 @@ font-size: 1.2rem;
 color: rgb(230, 131, 10);
 }
  
+.name_price{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+
+.keyword{
+    font-size: larger;
+    width: 100%;
+     text-align: center;
+    padding: 1rem;
+}
  
 @media (max-width: 425px){
     .packagecard{
