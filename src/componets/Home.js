@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../componets/small_components/Card.js";
- import Advanture from "./advantures.js";
+  import Advanture from "./advantures.js";
 import Service from "./small_components/service.js";
 import "./home.css";
 import Loading from "./small_components/loading" 

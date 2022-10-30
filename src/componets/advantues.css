@@ -25,14 +25,12 @@
  padding: 10px;
 
 }
-
- 
 .main_Card{
  
     padding: 1rem;
     display: flex;
     width: 30rem;
-    height: 15rem;
+    height: 20rem;
     flex-wrap: nowrap;
     position: relative;
     margin-top: 1rem;
@@ -42,7 +40,7 @@
     border-radius: 1.5rem;
     box-shadow: inset 0 -3em 3em rgba(16, 9, 9, 0.1), 0 0 0 2px rgb(208, 198, 198),
     0.3em 0.3em 1em rgba(248, 248, 248, 0.3);
-    cursor: pointer;
+
     
 }
 
@@ -66,6 +64,26 @@ height: 100%;
 .adv{
     margin: 1rem;
     font-size: x-large;
+}
+.famousBtn{
+    padding: .5rem;
+    background: black;
+    color: #fff;
+    border: 1px solid white;
+    border-radius: 1rem;
+    margin: .5rem;
+    cursor: pointer;
+}
+.subHeading{
+    color: aqua;
+    font-size:medium;
+}
+
+.famousplace{
+    overflow: hidden;
+    letter-spacing: .2rem;
+    width: 100%;
+    list-style-type: circle;
 }
 
 @media only screen and (max-width: 600px) {
@@ -92,3 +110,7 @@ height: 100%;
         padding: .5rem;
     }  
 }
+
+
+
+ 
